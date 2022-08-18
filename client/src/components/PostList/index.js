@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import { QUERY_POST } from '../utils/queries';
+import ReactionList from '../components/ReactionList';
 
 const { id: postId } = useParams();
 
@@ -38,7 +39,7 @@ const PostList = ({ posts, title }) => {
             <div className="card-body">
               <p>{post.body}</p>
               <p className="mb-0">
-                Reactions: {post.reactionCount} || Click To Join {' '}
+                Reactions: {post.reactionCount} || Click To{' '}
                 {post.reactionCount ? 'see' : 'start'} The Discussion!
               </p>
             </div>
