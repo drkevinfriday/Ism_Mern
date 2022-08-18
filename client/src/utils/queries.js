@@ -17,3 +17,24 @@ export const QUERY_POSTS = gql`
     }
   }
 `;
+
+export const QUERY_USER = gql`
+  query user($username: String!) {
+    user(username: $username) {
+      _id
+      username
+      email
+      empathCount
+      empaths {
+        _id
+        username
+      }
+      posts {
+        _id
+        body
+        createdAt
+        reactionCount
+      }
+    }
+  }
+`;
