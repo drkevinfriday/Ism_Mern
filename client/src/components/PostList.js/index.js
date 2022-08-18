@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const PostList = ({ posts, title }) => {
   if (!posts.length) {
@@ -13,7 +14,10 @@ const PostList = ({ posts, title }) => {
           <div key={post._id} className="card mb-3">
             <img></img>  
             <p className="card-header">
-              {post.username}
+            <Link
+                to={`/profile/${post.username}`} >
+            </Link>{' '}
+            {post.username}
               Story Published On {post.createdAt}
             </p>
             <div className="card-body">
