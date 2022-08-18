@@ -1,5 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+
+const { id: postId } = useParams();
 
 const PostList = ({ posts, title }) => {
   if (!posts.length) {
