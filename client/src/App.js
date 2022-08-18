@@ -3,7 +3,7 @@ import { ApolloProvider, ApolloClient, InMemoryCache, createHttpLink } from '@ap
 
 // ESTABLISH CONNECTION WITH BACK END SERVER GRAPHQL ENDPOINT
 const httpLink = createHttpLink({
-  uri: 'http://localhost:3001/graphql',
+  uri: '/graphql',
 });
 
 const client = new ApolloClient({
@@ -11,6 +11,7 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
+// REMINDER THAT WE ARE PASSING CLIENT VARIABLE IN AS THE VALUE OF THE CLIENT PROP 
 function App() {
   return (
     <ApolloProvider client={client}>
