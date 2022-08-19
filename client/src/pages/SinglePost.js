@@ -37,7 +37,7 @@ const SinglePost = (props) => {
   return (
     <div>
       <div className="card mb-3">
-        <p className="card-header">
+        <p className="card-title">
           {post.title}
           <span style={{ fontWeight: 700 }} className="text-light">
             {post.username}

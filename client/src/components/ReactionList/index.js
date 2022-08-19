@@ -10,7 +10,7 @@ const ReactionList = ({ reactions }) => {
     <div className="card-body">
         {reactions &&
         reactions.map(reaction => (
-            <p className="pill mb-3" key={reaction._id}>
+            <p className="rounded-1 mb-3" key={reaction._id}>
             {reaction.reactionBody} {'// '}
             <Link to={`/profile/${reaction.username}`}>
                 {reaction.username} on {reaction.createdAt}

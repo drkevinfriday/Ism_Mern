@@ -8,6 +8,7 @@ import NoMatch from './pages/NoMatch';
 import SinglePost from './pages/SinglePost';
 import Profile from './pages/Profile';
 import Signup from './pages/Signup';
+import './index.css';
 
 // ESTABLISH CONNECTION WITH BACK END SERVER GRAPHQL ENDPOINT
 const httpLink = createHttpLink({

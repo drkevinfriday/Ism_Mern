@@ -1,6 +1,6 @@
 //useQuery IS A APOLLO HOOK THAT ALLOWS US TO MAKE REQUESTS IN GRAPHQL SERVER/AVALIABLE BY THE APOLLOPROVIDER
 import { useQuery } from '@apollo/client';
-import { QUERY_THOUGHTS, QUERY_ME_BASIC } from '../utils/queries';
+import { QUERY_POSTS, QUERY_ME_BASIC } from '../utils/queries';
 import PostList from '../components/PostList';
 import PostForm from '../components/PostForm';
 import { Link } from 'react-router-dom';
@@ -16,10 +16,10 @@ const Home = () => {
     return (
       <main>
         <CategoryBar></CategoryBar>
-        <div className='flex-row justify-space-between'>
+        <div className='container  shadow p-3 mb-5 bg-body rounded flex-row justify-space-between'>
         {loggedIn && (
-         <Link to="/createpost">
-         <h2>Write A Story ...</h2>
+         <Link to="/profile">
+         <h2>Write A Story ✍🏾...</h2>
        </Link>
         )}
           <div className={`col-12 mb-3 ${loggedIn && 'col-lg-8'}`}>{loading ? (
@@ -28,11 +28,11 @@ const Home = () => {
                 <PostList posts={posts} title="Here's Your Opportunity To Read Stories" />
             )}</div>
             {loggedIn && userData ? (
-            <div className="col-12 col-lg-3 mb-3">
-              <PostList
+            <div className=" container col-12 col-lg-3 mb-3">
+              <EmpathList
                 username={userData.me.username}
                 empathCount={userData.me.empathCount}
-              empaths={userData.me.empaths}
+                empaths={userData.me.empaths}
               />
             </div>
           ) : null}
