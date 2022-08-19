@@ -4,6 +4,7 @@ import { QUERY_THOUGHTS, QUERY_ME_BASIC } from '../utils/queries';
 import PostList from '../components/PostList';
 import PostForm from '../components/PostForm';
 import { Link } from 'react-router-dom';
+import CategoryBar from '../components/CategoryBar';
 
 const Home = () => {
     const { loading, data } = useQuery(QUERY_POSTS);
@@ -14,6 +15,7 @@ const Home = () => {
     
     return (
       <main>
+        <CategoryBar></CategoryBar>
         <div className='flex-row justify-space-between'>
         {loggedIn && (
          <Link to="/createpost">

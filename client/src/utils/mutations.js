@@ -24,28 +24,22 @@ export const ADD_USER = gql`
   }
 `;
 
-export const ADD_EMPATH = gql`
-  mutation addEmpath($id: ID!) {
-    addEmpath(empathId: $id) {
-      _id
-      username
-      empathCount
-      empaths {
-        _id
-        username
-      }
-    }
-  }
-`;
-
-// WILL NEED TO CHANGE OTHER BODY TO postText 
+// CHANGED body TO postText 
 export const ADD_POST = gql`
   mutation addPost($postText: String!) {
     addPost(postText: $postText) {
       _id
       postText
+      title
       createdAt
       username
+      image{
+        url
+      }
+      category{
+        _id
+        name
+      }
       reactionCount
       reactions {
         _id
@@ -53,6 +47,31 @@ export const ADD_POST = gql`
     }
   }
 `;
+
+// NEED TO CHECK IF RIGHT
+export const REMOVE_POST = gql`
+  mutation removePost($id: ID!) {
+    removePost(id: $id) {
+      _id
+      postText
+      title
+      createdAt
+      username
+      image{
+        url
+      }
+      category{
+        _id
+        name
+      }
+      reactionCount
+      reactions {
+        _id
+      }
+    }
+  }
+`;
+
 export const ADD_REACTION = gql`
   mutation addReaction($postId: ID!, $reactionBody: String!) {
     addReaction(postId: $postId, reactionBody: $reactionBody) {
@@ -67,3 +86,30 @@ export const ADD_REACTION = gql`
     }
   }
 `;
+
+export const ADD_EMPATH = gql`
+  mutation addEmpath($id: ID!) {
+    addEmpath(empathId: $id) {
+      _id
+      username
+      empathCount
+      empaths {
+        _id
+        username
+      }
+    }
+  }
+`;
+export const REMOVE_EMPATH = gql`
+  mutation removeEMPATH($id: ID!) {
+    removeEMPATH(id: $id) {
+      _id
+      username
+      empaths {
+        _id
+        username
+      }
+    }
+  }
+`;
+

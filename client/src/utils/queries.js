@@ -4,9 +4,43 @@ export const QUERY_POSTS = gql`
   query posts($username: String) {
     posts(username: $username) {
       _id
-      body
+      postText
+      title
       createdAt
       username
+      image{
+        url
+      }
+      category{
+        _id
+        name
+      }
+      reactionCount
+      reactions {
+        _id
+        createdAt
+        username
+        reactionBody
+      }
+    }
+  }
+`;
+
+export const QUERY_POST = gql`
+  query post($id: ID!) {
+    post(_id: $id) {
+      _id
+      postText
+      title
+      createdAt
+      username
+      image{
+        url
+      }
+      category{
+        _id
+        name
+      }
       reactionCount
       reactions {
         _id
@@ -31,8 +65,16 @@ export const QUERY_USER = gql`
       }
       posts {
         _id
-        body
+        postText
+        title
         createdAt
+        image{
+          url
+        }
+        category{
+          _id
+          name
+        }
         reactionCount
       }
     }
@@ -48,8 +90,16 @@ export const QUERY_ME = gql`
       empathCount
       posts {
         _id
-        body
+        postText
+        title
         createdAt
+        image{
+        url
+      }
+      category{
+        _id
+        name
+      }
         reactionCount
         reactions {
           _id

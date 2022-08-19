@@ -4,7 +4,7 @@ import { ADD_POST } from '../../utils/mutations';
 import { QUERY_POSTS, QUERY_ME } from '../../utils/queries';
 
 const PostForm = () => {
-    const [body, setText] = useState('');
+    const [postText, setText] = useState('');
     const [characterCount, setCharacterCount] = useState(0);
 
     const [addPost, { error }] = useMutation(ADD_POST, {
@@ -44,7 +44,7 @@ const PostForm = () => {
         try {
           // ADD POST TO DB
           await addPost({
-            variables: { body }
+            variables: { postText }
           });
       
           // CLEAR FORM VALUE

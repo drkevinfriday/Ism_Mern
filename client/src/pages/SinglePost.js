@@ -38,6 +38,7 @@ const SinglePost = (props) => {
     <div>
       <div className="card mb-3">
         <p className="card-header">
+          {post.title}
           <span style={{ fontWeight: 700 }} className="text-light">
             {post.username}
           </span>{' '}
