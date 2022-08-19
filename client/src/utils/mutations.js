@@ -23,3 +23,47 @@ export const ADD_USER = gql`
     }
   }
 `;
+
+export const ADD_EMPATH = gql`
+  mutation addEmpath($id: ID!) {
+    addEmpath(empathId: $id) {
+      _id
+      username
+      empathCount
+      empaths {
+        _id
+        username
+      }
+    }
+  }
+`;
+
+// WILL NEED TO CHANGE OTHER BODY TO postText 
+export const ADD_POST = gql`
+  mutation addPost($postText: String!) {
+    addPost(postText: $postText) {
+      _id
+      postText
+      createdAt
+      username
+      reactionCount
+      reactions {
+        _id
+      }
+    }
+  }
+`;
+export const ADD_REACTION = gql`
+  mutation addReaction($postId: ID!, $reactionBody: String!) {
+    addReaction(postId: $postId, reactionBody: $reactionBody) {
+      _id
+      reactionCount
+      reactions {
+        _id
+        reactionBody
+        createdAt
+        username
+      }
+    }
+  }
+`;

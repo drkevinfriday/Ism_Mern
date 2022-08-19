@@ -2,6 +2,8 @@
 import { useQuery } from '@apollo/client';
 import { QUERY_THOUGHTS, QUERY_ME_BASIC } from '../utils/queries';
 import PostList from '../components/PostList';
+import PostForm from '../components/PostForm';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
     const { loading, data } = useQuery(QUERY_POSTS);
@@ -13,6 +15,11 @@ const Home = () => {
     return (
       <main>
         <div className='flex-row justify-space-between'>
+        {loggedIn && (
+         <Link to="/createpost">
+         <h2>Write A Story ...</h2>
+       </Link>
+        )}
           <div className={`col-12 mb-3 ${loggedIn && 'col-lg-8'}`}>{loading ? (
           <div>Loading Your Daily Feed ✌🏾...</div>
             ) : (

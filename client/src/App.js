@@ -5,8 +5,8 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { setContext } from '@apollo/client/link/context';
 import Login from './pages/Login';
 import NoMatch from './pages/NoMatch';
-import SingleThought from './pages/SinglePost';
-import SingleThought from './pages/Sidebar';
+import SinglePost from './pages/SinglePost';
+import Sidebar from './pages/Sidebar';
 import Profile from './pages/Profile';
 import Signup from './pages/Signup';
 
