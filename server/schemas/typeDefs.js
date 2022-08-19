@@ -13,6 +13,7 @@ const typeDefs = gql
     username: String
     reactionCount: Int
     reactions: [Reaction]
+    category: String
   }
   type Reaction {
     _id: ID

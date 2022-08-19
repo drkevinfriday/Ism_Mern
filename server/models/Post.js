@@ -19,7 +19,10 @@ const postSchema = new Schema(
       type: String,
       required: true
     },
-    reactions: [reactionSchema]
+    reactions: [reactionSchema],
+    category: {
+      type: [String],
+    }
   },
   {
     toJSON: {
