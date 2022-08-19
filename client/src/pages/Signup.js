@@ -2,6 +2,7 @@ import { useMutation } from '@apollo/client';
 import { ADD_USER } from '../utils/mutations';
 import Auth from '../utils/auth';
 
+const Signup = () => {
 const [addUser, { error }] = useMutation(ADD_USER);
 
 const handleFormSubmit = async event => {
@@ -18,3 +19,6 @@ const handleFormSubmit = async event => {
       console.error(event);
     }
   };
+}
+
+export default Signup;

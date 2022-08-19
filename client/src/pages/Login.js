@@ -19,3 +19,5 @@ const handleFormSubmit = async event => {
       console.error(event);
     }
   };
+
+  export default login;

@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 // MIDDLEWARE TO RETRIEVE TOKEN
 import { setContext } from '@apollo/client/link/context';
 import Login from './pages/Login';
-import NoMatch from './pages/NoMatch';
+//import NoMatch from './pages/NoMatch';
 import SinglePost from './pages/SinglePost';
 import Profile from './pages/Profile';
 import Signup from './pages/Signup';
