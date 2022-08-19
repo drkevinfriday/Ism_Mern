@@ -7,10 +7,12 @@ const CategoryBar = (props) => {
   // pull categories from props
   const { category } = useParams();
   // map through categories and return a link for each one
-  category.map(({ name, postText, postId, title, reactionCount }) => {
+  category.map(({ name, _id, postText, postId, title, reactionCount }) => {
+
+    // ADD A FUNCTION TO OPEN A MODAL/PAGE FOR EACH CATEGORY?
    
   return(
-    <section key={postId}>
+    <section key={_id}>
         <Marquee>
         <ul className="list-group list-group-horizontal">
             <li className="list-group item flex-fill">
@@ -47,10 +49,11 @@ const CategoryBar = (props) => {
   )
 
 function Categories () {
-  // show all posts for a category
+  // display all posts for a category
+    // ADD A CATEGORY DESCRIPTION? 
   return (
-    // display each category and all of its posts
-    <div key={postId}>
+    
+    <div key={_id}>
       <h1>Category Name: {`${name}`}</h1>
       <p>Category Description: </p>
       <div>
