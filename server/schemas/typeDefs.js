@@ -34,8 +34,7 @@ const typeDefs = gql
     user: User
   }
 
-
-  type Query {
+  type Query{
     posts(username: String): [Post]
   }
   
