@@ -34,6 +34,10 @@ export const QUERY_USER = gql`
         body
         createdAt
         reactionCount
+        category{
+          _id
+          name: [Sexism, Racism, Ableism, Anti-Semitism, Colorism, Cissexism, Elitism, Tokenism]
+        }
       }
     }
   }
