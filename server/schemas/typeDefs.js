@@ -24,9 +24,9 @@ const typeDefs = gql
     _id: ID
     username: String
     email: String
-    friendCount: Int
-    poats: [Post]
-    friends: [User]
+    empathCount: Int
+    posts: [Post]
+    empaths: [User]
   }
 
   type Auth {
@@ -35,7 +35,7 @@ const typeDefs = gql
   }
 
 
-type Query {
+  type Query {
     posts(username: String): [Post]
   }
   
@@ -52,7 +52,7 @@ type Query {
     addUser(username: String!, email: String!, password: String!): Auth
     addPost(postText: String!): Post
     addReaction(postId: ID!, reactionBody: String!): Post
-    addFriend(friendId: ID!): User
+    addEmpath(EmpathId: ID!): User
   }
 `;
 

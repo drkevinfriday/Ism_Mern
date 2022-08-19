@@ -8,7 +8,7 @@ const resolvers = {
               const userData = await User.findOne({ _id: context.user._id })
                 .select('-__v -password')
                 .populate('posts')
-                .populate('friends');
+                .populate('empaths');
           
               return userData;
             }
@@ -21,21 +21,21 @@ const resolvers = {
             return Post.find(params).sort({ createdAt: -1 });
           },
         //   get single post by id
-        Post: async (parent, {_id})=>{
+        post: async (parent, {_id})=>{
             return Post.findOne({_id});
         },
         // get all users
         users: async () => {
             return User.find()
             .select('-__v -password')
-            .populate('friends')
+            .populate('empaths')
             .populate('posts');
         },
         // get a user by username
         user: async (parent, { username }) => {
             return User.findOne({ username })
             .select('-__v -password')
-            .populate('friends')
+            .populate('empaths')
             .populate('posts');
         },
         
@@ -91,13 +91,13 @@ const resolvers = {
             }
             throw new AuthenticationError('You need to be logged in')
         },
-        addFriend: async (parent, { friendId }, context) => {
+        addEmpath: async (parent, { empathId }, context) => {
             if (context.user) {
               const updatedUser = await User.findOneAndUpdate(
                 { _id: context.user._id },
-                { $addToSet: { friends: friendId } },
+                { $addToSet: { empaths: empathId } },
                 { new: true }
-              ).populate('friends');
+              ).populate('empaths');
           
               return updatedUser;
             }

@@ -26,7 +26,7 @@ const userSchema = new Schema(
         ref: 'Post'
       }
     ],
-    friends: [
+    empaths: [
       {
         type: Schema.Types.ObjectId,
         ref: 'User'
@@ -55,8 +55,8 @@ userSchema.methods.isCorrectPassword = async function(password) {
   return bcrypt.compare(password, this.password);
 };
 
-userSchema.virtual('friendCount').get(function() {
-  return this.friends.length;
+userSchema.virtual('empathCount').get(function() {
+  return this.empaths.length;
 });
 
 const User = model('User', userSchema);
