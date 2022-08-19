@@ -1,4 +1,4 @@
-const { User, Thought } =require('../models')
+const { User, Post } =require('../models')
 // import the gql tagged template function
 const { gql } = require('apollo-server-express');
 
@@ -6,9 +6,9 @@ const { gql } = require('apollo-server-express');
 
 // create our typeDefs
 const typeDefs = gql
-`type Thought {
+`type Post {
     _id: ID
-    thoughtText: String
+    postText: String
     createdAt: String
     username: String
     reactionCount: Int
@@ -25,7 +25,7 @@ const typeDefs = gql
     username: String
     email: String
     friendCount: Int
-    thoughts: [Thought]
+    poats: [Post]
     friends: [User]
   }
 
@@ -36,22 +36,22 @@ const typeDefs = gql
 
 
 type Query {
-    thoughts(username: String): [Thought]
+    posts(username: String): [Post]
   }
   
   type Query {
     me: User
     users: [User]
     user(username: String!): User
-    thoughts(username: String): [Thought]
-    thought(_id: ID!): Thought
+    posts(username: String): [Post]
+    post(_id: ID!): Post
   }
 
   type Mutation {
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
-    addThought(thoughtText: String!): Thought
-    addReaction(thoughtId: ID!, reactionBody: String!): Thought
+    addPost(postText: String!): Post
+    addReaction(postId: ID!, reactionBody: String!): Post
     addFriend(friendId: ID!): User
   }
 `;

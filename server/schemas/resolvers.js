@@ -1,4 +1,4 @@
-const { User, Thought } = require('../models');
+const { User, Post } = require('../models');
 const { AuthenticationError } = require('apollo-server-express')
 const { signToken }= require('../utils/auth')
 const resolvers = {
@@ -7,7 +7,7 @@ const resolvers = {
             if (context.user) {
               const userData = await User.findOne({ _id: context.user._id })
                 .select('-__v -password')
-                .populate('thoughts')
+                .populate('posts')
                 .populate('friends');
           
               return userData;
@@ -15,28 +15,28 @@ const resolvers = {
           
             throw new AuthenticationError('Not logged in');
           },
-        // get all thoughts by username or all thoughts
-        thoughts: async (parent, { username }) => {
+        // get all posts by username or all posts
+        posts: async (parent, { username }) => {
             const params = username ? { username } : {};
-            return Thought.find(params).sort({ createdAt: -1 });
+            return Post.find(params).sort({ createdAt: -1 });
           },
-        //   get single thought by id
-        thought: async (parent, {_id})=>{
-            return Thought.findOne({_id});
+        //   get single post by id
+        Post: async (parent, {_id})=>{
+            return Post.findOne({_id});
         },
         // get all users
         users: async () => {
             return User.find()
             .select('-__v -password')
             .populate('friends')
-            .populate('thoughts');
+            .populate('posts');
         },
         // get a user by username
         user: async (parent, { username }) => {
             return User.findOne({ username })
             .select('-__v -password')
             .populate('friends')
-            .populate('thoughts');
+            .populate('posts');
         },
         
     },
@@ -64,30 +64,30 @@ const resolvers = {
             const token = signToken(user)
             return {token, user};
         },
-        addThought: async (parents,args, context)=> {
+        addPost: async (parents,args, context)=> {
             if (context.user) {
-                const thought = await Thought.create({...args, username: context.user.username});
+                const post = await Post.create({...args, username: context.user.username});
 
                 await User.findOneAndUpdate(
                     {_id: context.user._id},
-                    { $push: {thoughts:thought._id} },
+                    { $push: {posts:post._id} },
                     {new: true}
 
                 );
-                return thought;
+                return post;
             }
             throw new AuthenticationError('You need to be logged in')
         },
-        // update thought mutation
-        addReaction: async (parent,{thoughtId, reactionBody}, context)=> {
+        // update post mutation
+        addReaction: async (parent,{postId, reactionBody}, context)=> {
             if (context.user) {
-                const updatedThought = await Thought.findOneAndUpdate(
-                    {_id: thoughtId},
+                const updatedPost = await Post.findOneAndUpdate(
+                    {_id: postId},
                     { $push: { reactions: { reactionBody, username:context.user.username } } },
                     {new: true, runValidators: true}
                 )
                 
-                return updatedThought;
+                return updatedPost;
             }
             throw new AuthenticationError('You need to be logged in')
         },
