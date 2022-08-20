@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
-const [addReaction, { error }] = useMutation(ADD_REACTION);
+//const [addReaction, { error }] = useMutation(ADD_REACTION);
+import { ADD_REACTION } from '../../utils/mutations';
 
 const ReactionForm = ({ postId }) => {
   const [reactionBody, setBody] = useState('');

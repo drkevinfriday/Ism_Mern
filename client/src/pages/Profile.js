@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+//import { useParams } from 'react-router-dom';
 import PostList from '../components/PostList';
 import EmpathList from '../components/EmpathList';
 import { useQuery,useMutation } from '@apollo/client';
@@ -6,7 +6,7 @@ import { ADD_EMPATH } from '../utils/mutations';
 import { QUERY_USER, QUERY_ME } from '../utils/queries';
 import { Navigate, useParams } from 'react-router-dom';
 import PostForm from '../components/PostForm';
-
+import Auth from '../utils/auth';
 
 
 const Profile = () => {
