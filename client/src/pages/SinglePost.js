@@ -2,7 +2,7 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 import ReactionList from '../components/ReactionList';
 import { useQuery } from '@apollo/client';
-import { QUERY_POSTS } from '../utils/queries';
+import { QUERY_POST } from '../utils/queries';
 import { useState } from 'react';
 import Auth from '../utils/auth';
 import ReactionForm from '../components/ReactionForm';
@@ -27,12 +27,12 @@ const SinglePost = (props) => {
 
   const { id: postId } = useParams();
 
-  const { loading, data } = useQuery(QUERY_POSTS, {
+  const { loading, data } = useQuery(QUERY_POST, {
     variables: { id: postId },
   });
 
-  const post = data?.post || {};
-
+  const post = data?.post|| {};
+  console.log(post)
   if (loading) {
     return <div>Loading...</div>;
   }

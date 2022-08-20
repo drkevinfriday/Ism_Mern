@@ -55,8 +55,8 @@ userSchema.methods.isCorrectPassword = async function(password) {
   return bcrypt.compare(password, this.password);
 };
 
-userSchema.virtual('empathCount').get(function() {
-  return this.empaths.length;
+userSchema.virtual('postCount').get(function() {
+  return this.posts.length;
 });
 
 const User = model('User', userSchema);
