@@ -85,6 +85,21 @@ function Category (props) {
     return (
         <Row xs={1} md={2} className="g-4"
         activeindex={index}
+        style= {{
+            background: "linear-gradient(-45deg, #b7dbf9, #aa4cd9, #fff9bf, #f8a097",
+            animation: "gradient 3s ease-in-out infinite",
+            position: "relative",
+            paddingTop: "100px",
+            paddingBottom: "100px",
+            paddingLeft: "100px",
+            paddingRight: "100px",
+            
+            marginTop: "0",
+            marginLeft: "0",
+            marginRight: "0",
+            
+        }}
+        
         >
             {photos.map(({ image, category, id, url, description}) => (
           //{Array.from({ length: 4 }).map((_, idx) => (
@@ -97,9 +112,20 @@ function Category (props) {
                 }}
                  />
                 
-                <Card.Body>
-                <Link to={url}>This is a link</Link>
-                  <Card.Title>{category}</Card.Title>
+                <Card.Body
+                style={{
+                    background: "transparent",
+                    
+                }}>
+                  <Link to={url}
+                  style= {{
+                    textDecoration: 'none',
+                    fontFamily: 'Misto',
+                    fontSize: '3vw',
+                    color: '#2f2f2f',
+                    letterSpacing: '2px',
+                  }}
+                  >{category}</Link>
                   <Card.Text>
                     {description}
                   </Card.Text>
