@@ -1,4 +1,5 @@
-import logo from "./logo.svg";
+import React from "react";
+//import logo from "./logo.svg";
 import {
   ApolloProvider,
   ApolloClient,
@@ -14,6 +15,7 @@ import NoMatch from './pages/NoMatch';
 import SinglePost from './pages/SinglePost';
 import Profile from './pages/Profile';
 import Signup from './pages/Signup';
+// Header and Footer need to be rendered through a diff component
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import './index.css';
@@ -23,30 +25,32 @@ const httpLink = createHttpLink({
   uri: "/graphql",
 });
 
-const client = new ApolloClient({
-  // CONNECT OBJECTS TO RETRIEVE REQUESTS WITH TOKEN AND SET HEADERS BEFORE API REQUEST
-  link: authLink.concat(httpLink),
-  cache: new InMemoryCache(),
-});
-
 //RETRIEVE FROM LOCALSTORAGE & SET HEADERS TO INCLUDE TOKEN
 const authLink = setContext((_, { headers }) => {
   const token = localStorage.getItem("id_token");
   return {
     headers: {
       ...headers,
-      authorization: token ? `Bearer ${token}` : "",
+      authorization: token ? `Bearer ${token}` : " ",
     },
   };
 });
 
+const client = new ApolloClient({
+  // CONNECT OBJECTS TO RETRIEVE REQUESTS WITH TOKEN AND SET HEADERS BEFORE API REQUEST
+  link: authLink.concat(httpLink),
+  cache: new InMemoryCache(),
+});
+
+
+
 // REMINDER THAT WE ARE PASSING CLIENT VARIABLE IN AS THE VALUE OF THE CLIENT PROP
 function App() {
   return (
-    <ApolloProvider client={client}>
+  <ApolloProvider client={client}>
       <Router>
         <div className="flex-column justify-flex-start min-100-vh">
-          <Header />
+        
           <div className="container">
             <Routes>
               <Route path="/" element={<Home />} />
@@ -60,7 +64,7 @@ function App() {
               <Route path="*" element={<NoMatch />} />
             </Routes>
           </div>
-          <Footer />
+          
         </div>
       </Router>
     </ApolloProvider>

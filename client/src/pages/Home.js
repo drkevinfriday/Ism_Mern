@@ -5,6 +5,8 @@ import PostList from '../components/PostList';
 import PostForm from '../components/PostForm';
 import { Link } from 'react-router-dom';
 import CategoryBar from '../components/CategoryBar';
+import EmpathList from '../components/EmpathList';
+import Auth from '../utils/auth';
 
 const Home = () => {
     const { loading, data } = useQuery(QUERY_POSTS);
