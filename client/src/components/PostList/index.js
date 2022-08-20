@@ -1,15 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { REMOVE_POST } from "../../utils/mutations";
+
 
 const PostList = ({ posts, title }) => {
   if (!posts.length) {
-    return (
-      <h3>
+    return <h3>
         No Stories Yet! We Are Here To Support Your Stories. Write When You're
-        Ready 😊{" "}
-      </h3>
-    );
+        Ready 😊{" "}</h3>;
   }
+
   const handleDelete = (event) => {
     const removeID = event.target.parentElement.getAtrribute("data-id")
     deletePost( removeID)

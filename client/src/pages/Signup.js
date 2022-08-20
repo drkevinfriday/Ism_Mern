@@ -31,7 +31,7 @@ function Signup() {
 
   return (
     <form onSubmit={handleFormSubmit}>
-      <label for="email">Email:</label>
+      <label htmlFor="email">Email:</label>
       <input
         type="text"
         value={inputs.email || ""}
@@ -41,7 +41,7 @@ function Signup() {
       />
 
       {/**Create labels for username and password as the email above*/}
-      <label for="username">Username:</label>
+      <label htmlFor="username">Username:</label>
       <input
         type="text"
         value={inputs.username || ""}
@@ -50,14 +50,18 @@ function Signup() {
         name="username"
       />
 
-      <label for="password">Password:</label>
+      <label htmlFor="password">Password:</label>
       <input
         type="text"
         value={inputs.password || ""}
         onChange={handleChange}
         id="password"
         name="password"
+        placeholder="********"
       />
+      <button className="btn d-block w-100" type="submit">
+                Submit
+      </button>
     </form>
   );
 }
