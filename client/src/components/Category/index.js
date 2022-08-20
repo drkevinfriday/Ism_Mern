@@ -1,57 +1,77 @@
 import React, { useState, useEffect }from 'react';
+import { Link } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 
-import blm from '../../assets/images/blm.jpeg';
-import tokenism from '../../assets/images/tokenism.jpeg';
-import sexism from '../../assets/images/sexism.jpeg';
-import ableism from '../../assets/images/ableism.jpeg';
-import antisemitism from '../../assets/images/anti-semitism.jpeg';
+import racism from '../../assets/images/racism.jpg';
+import tokenism from '../../assets/images/tokenism.jpg';
+import sexism from '../../assets/images/sexism.jpg';
+import ableism from '../../assets/images/ableism.jpg';
+import antisemitism from '../../assets/images/anti-semitism.jpg';
+import elitism from '../../assets/images/elitism.jpg';
+import cissexism from '../../assets/images/cissexism.jpg';
+import colorism from '../../assets/images/colorism.jpg';
 
 function Category (props) {
     const [ currentCategory, setCurrentCategory ] = useState();
 
     const [photos] = useState ([
         {
+        id: 1,
         category: 'Sexism',
         image: sexism,
-        url: ''
+        url: '/category/sexism',
+        description: 'Sexism is a form of discrimination...'
         },
         {
+        id: 2,
         category: 'Racism',
-        image: blm,
-        url: ''
+        image: racism,
+        url: '/category/racism',
+        description: 'Racism...'
         },
         {
+        id: 3,
         category: 'Ableism',
         image: ableism,
-        url: ''
+        url: 'category/ableism',
+        description: 'Ableism...'
         },
         {
+        id: 4,
         category: 'Anti-Semitism',
         image: antisemitism,
-        url: ''
+        url: 'category/antisemitism',
+        description: 'Anti-Semitism...'
         },
         {
-        category: 'Colorism',
-        image: ,
-        url: ''
-        },
-        {
-        category: 'Cissexism',
-        image: ,
-        url: ''
-        },
-        {
-        category: 'Elitism',
-        image: ,
-        url: ''
-        },
-        {
+        id: 5,
         category: 'Tokenism',
         image: tokenism,
-        url: ''
+        url: 'category/tokenism',
+        description: 'Tokenism...'
+        },
+        {
+        id: 6,
+        category: 'Colorism',
+        image: colorism,
+        url: 'category/colorism',
+        description: 'Colorism...'
+        },
+        {
+        id: 7,
+        category: 'Cissexism',
+        image: cissexism,
+        url: 'category/cissexism',
+        description: 'Cissexism...'
+        },
+        {
+        id: 8,
+        category: 'Elitism',
+        image: elitism,
+        url: 'category/elitism',
+        description: 'Elitism...'
         }
     ]);
 
@@ -62,25 +82,34 @@ function Category (props) {
         setIndex(selectedIndex);  
     };
 
-   
     return (
-        <Row xs={1} md={2} className="g-4">
-          {Array.from({ length: 4 }).map((_, idx) => (
+        <Row xs={1} md={2} className="g-4"
+        activeindex={index}
+        >
+            {photos.map(({ image, category, id, url, description}) => (
+          //{Array.from({ length: 4 }).map((_, idx) => (
             <Col>
-              <Card>
-                <Card.Img variant="top" src="holder.js/100px160" />
+              <Card  
+              >
+                <Card.Img variant="top" src={image} 
+                style={{
+                    maxHeight: '75%'
+                }}
+                 />
+                
                 <Card.Body>
-                  <Card.Title>Card title</Card.Title>
+                <Link to={url}>This is a link</Link>
+                  <Card.Title>{category}</Card.Title>
                   <Card.Text>
-                    This is a longer card with supporting text below as a natural
-                    lead-in to additional content. This content is a little bit
-                    longer.
+                    {description}
                   </Card.Text>
+                  
                 </Card.Body>
               </Card>
             </Col>
-          ))}
+              ))}
         </Row>
       );
-   
  }
+
+ export default Category;

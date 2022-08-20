@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import CategoryBar from '../components/CategoryBar';
 import EmpathList from '../components/EmpathList';
 import Auth from '../utils/auth';
+import Category from '../components/Category';
 
 const Home = () => {
     const { loading, data } = useQuery(QUERY_POSTS);
@@ -17,6 +18,7 @@ const Home = () => {
     
     return (
       <main>
+        <Category></Category>
         <CategoryBar></CategoryBar>
         <div className='container  shadow p-3 mb-5 bg-body rounded flex-row justify-space-between'>
         {loggedIn && (

@@ -26,7 +26,7 @@ const PostForm = () => {
           // PUSH NEW POST IN ARRAY
           cache.writeQuery({
             query: QUERY_POSTS,
-            data: { POSTS: [addPOST, ...posts] }
+            data: { POSTS: [addPost, ...posts] }
           });
         }
       });
@@ -68,7 +68,7 @@ const PostForm = () => {
         </div>
         <div className="mb-3">
             <label for="story" className={`${characterCount === 2000 ? 'text-error' : ''}`} class="form-label">What's Your Story?<br>Character Count: {characterCount}/2000 {error && <span className="ml-2">Something went wrong...</span>}</br></label>
-            <textarea className="form-control" id="Story"  value={body} rows="3" onChange={handleChange}></textarea>
+            <textarea className="form-control" id="Story"  value={postText} rows="3" onChange={handleChange}></textarea>
         </div>
         <div className="mb-3">
           <select className="form-select" aria-label="Pick A Category">

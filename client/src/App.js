@@ -19,6 +19,7 @@ import Signup from './pages/Signup';
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import './index.css';
+import Category from "./components/Category";
 
 // ESTABLISH CONNECTION WITH BACK END SERVER GRAPHQL ENDPOINT
 const httpLink = createHttpLink({
@@ -62,6 +63,7 @@ function App() {
               </Route>
               <Route path="/post/:id" element={<SinglePost />} />
               <Route path="*" element={<NoMatch />} />
+              <Route path="/category/:category" />
             </Routes>
           </div>
           
