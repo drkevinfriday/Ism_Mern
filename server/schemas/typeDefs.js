@@ -21,7 +21,7 @@ const typeDefs = gql
 
   type Category {
     _id: ID
-    catergoryName: String
+    categoryName: String
   }
   type Reaction {
     _id: ID
