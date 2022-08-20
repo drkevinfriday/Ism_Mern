@@ -29,9 +29,9 @@ if (process.env.NODE_ENV === 'production') {
 }
 // temporary comment out to test apollo server
 
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../client/build/index.html'));
-});
+// app.get('*', (req, res) => {
+//   res.sendFile(path.join(__dirname, '../client/build/index.html'));
+// });
 
 
 //  Create a new instance of an Apollo server with GraphQL schema
