@@ -1,4 +1,5 @@
 //useQuery IS A APOLLO HOOK THAT ALLOWS US TO MAKE REQUESTS IN GRAPHQL SERVER/AVALIABLE BY THE APOLLOPROVIDER
+<<<<<<< HEAD
 import { useQuery } from '@apollo/client';
 import { QUERY_POSTS, QUERY_ME_BASIC } from '../utils/queries';
 import PostList from '../components/PostList';
@@ -36,8 +37,45 @@ const Home = () => {
               />
             </div>
           ) : null}
+=======
+import { useQuery } from "@apollo/client";
+import { QUERY_THOUGHTS, QUERY_ME_BASIC, QUERY_POSTS } from "../utils/queries";
+import PostList from "../components/PostList";
+import auth from "../utils/auth";
+
+const Home = () => {
+  const { loading, data } = useQuery(QUERY_POSTS);
+  // OBJECT DESTRUCTURING TO EXTRACT FROM USEQUERY HOOK
+  const { data: userData } = useQuery(QUERY_ME_BASIC);
+  const posts = data?.posts || [];
+  const loggedIn = auth.loggedIn();
+
+  return (
+    <main>
+      <div className="flex-row justify-space-between">
+        <div className={`col-12 mb-3 ${loggedIn && "col-lg-8"}`}>
+          {loading ? (
+            <div>Loading Your Daily Feed ✌🏾...</div>
+          ) : (
+            <PostList
+              posts={posts}
+              title="Here's Your Opportunity To Read Stories"
+            />
+          )}
+>>>>>>> 974e1ad4bf1c0f0086bc645b3becf02d9cdb5d81
         </div>
-      </main>
-    );
-  };
-  
+        {loggedIn && userData ? (
+          <div className="col-12 col-lg-3 mb-3">
+            <PostList
+              username={userData.me.username}
+              empathCount={userData.me.empathCount}
+              empaths={userData.me.empaths}
+            />
+          </div>
+        ) : null}
+      </div>
+    </main>
+  );
+};
+
+export default Home;
