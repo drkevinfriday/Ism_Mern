@@ -42,13 +42,13 @@ const SinglePost = (props) => {
       <div className="card mb-3">
         <p className="card-title">
           {post.title}
-          <span style={{ fontWeight: 700 }} className="text-light">
+          <span style={{ fontWeight: 700 }} className="text-dark">
             {post.username}
           </span>{' '}
           Story Published On {post.createdAt}
         </p>
         <div className="card-body">
-          <p>{post.body}</p>
+          <p>{post.postText}</p>
         </div>
       </div>
       {post.reactionCount > 0 && (

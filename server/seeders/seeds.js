@@ -14,10 +14,12 @@ db.once('open', async () => {
     const username = faker.internet.userName();
     const email = faker.internet.email(username);
     const password = faker.internet.password();
-    const category =  faker.name()
+    
 
     userData.push({ username, email, password });
   }
+
+ 
 
   const createdUsers = await User.collection.insertMany(userData);
 
@@ -70,6 +72,9 @@ db.once('open', async () => {
       { runValidators: true }
     );
   }
+
+
+
   
 
   console.log('all done!');

@@ -30,7 +30,10 @@ export const QUERY_POSTS = gql`
     }
   }
 `;
-
+// category{
+//   _id
+//   categoryName
+// }
 export const QUERY_POST = gql`
   query post($id: ID!) {
     post(_id: $id) {
@@ -39,13 +42,6 @@ export const QUERY_POST = gql`
       title
       createdAt
       username
-      image{
-        url
-      }
-      category{
-        _id
-        name
-      }
       reactionCount
       reactions {
         _id
