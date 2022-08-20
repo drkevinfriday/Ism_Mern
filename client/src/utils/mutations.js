@@ -12,6 +12,22 @@ export const LOGIN_USER = gql`
   }
 `;
 
+export const ADD_POST = gql`
+  mutation addThought($thoughtText: String!) {
+    addThought(thoughtText: $thoughtText) {
+      _id
+      thoughtText
+      createdAt
+      username
+      reactionCount
+      reactions {
+        _id
+      }
+    }
+  }
+`;
+
+
 export const ADD_USER = gql`
   mutation addUser($username: String!, $email: String!, $password: String!) {
     addUser(username: $username, email: $email, password: $password) {
@@ -24,6 +40,7 @@ export const ADD_USER = gql`
   }
 `;
 
+<<<<<<< HEAD
 // CHANGED body TO postText 
 export const ADD_POST = gql`
   mutation addPost($postText: String!) {
@@ -43,11 +60,24 @@ export const ADD_POST = gql`
       reactionCount
       reactions {
         _id
+=======
+
+export const ADD_EMPATH = gql`
+  mutation addFriend($id: ID!) {
+    addFriend(friendId: $id) {
+      _id
+      username
+      friendCount
+      friends {
+        _id
+        username
+>>>>>>> server
       }
     }
   }
 `;
 
+<<<<<<< HEAD
 // NEED TO CHECK IF RIGHT
 export const REMOVE_POST = gql`
   mutation removePost($id: ID!) {
@@ -67,14 +97,29 @@ export const REMOVE_POST = gql`
       reactionCount
       reactions {
         _id
+=======
+export const REMOVE_EMPATH = gql`
+  mutation removeFriend($id: ID!) {
+    removeFriend(id: $id) {
+      _id
+      username
+      friends {
+        _id
+        username
+>>>>>>> server
       }
     }
   }
 `;
 
 export const ADD_REACTION = gql`
+<<<<<<< HEAD
   mutation addReaction($postId: ID!, $reactionBody: String!) {
     addReaction(postId: $postId, reactionBody: $reactionBody) {
+=======
+  mutation addReaction($thoughtId: ID!, $reactionBody: String!) {
+    addReaction(thoughtId: $thoughtId, reactionBody: $reactionBody) {
+>>>>>>> server
       _id
       reactionCount
       reactions {
@@ -86,6 +131,7 @@ export const ADD_REACTION = gql`
     }
   }
 `;
+<<<<<<< HEAD
 
 export const ADD_EMPATH = gql`
   mutation addEmpath($id: ID!) {
@@ -113,3 +159,5 @@ export const REMOVE_EMPATH = gql`
   }
 `;
 
+=======
+>>>>>>> server
