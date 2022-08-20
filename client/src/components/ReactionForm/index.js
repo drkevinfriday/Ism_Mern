@@ -37,7 +37,7 @@ const ReactionForm = ({ postId }) => {
       <form>
         <div className="mb-3">
         <label
-        for="characterCount"className={`m-0 form-label${characterCount === 2000 || error ? 'text-error' : ''}`}>
+        htmlFor="characterCount"className={`m-0 form-label${characterCount === 2000 || error ? 'text-error' : ''}`}>
         Character Count: {characterCount}/2000
         {error && <span className="ml-2">Something Went Wrong...</span>}
       </label>  

@@ -30,6 +30,7 @@ function Signup() {
   };
 
   return (
+    <div>
     <form onSubmit={handleFormSubmit}>
       <label htmlFor="email">Email:</label>
       <input
@@ -63,6 +64,8 @@ function Signup() {
                 Submit
       </button>
     </form>
+    {error && <div>Signup failed</div>}
+    </div>
   );
 }
 

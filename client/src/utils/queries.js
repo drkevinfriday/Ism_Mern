@@ -1,5 +1,16 @@
 import { gql } from '@apollo/client';
 
+// deleted image and category from query temporarily
+/*
+image{
+  url
+}
+category{
+  _id
+  name
+}
+*/
+
 export const QUERY_POSTS = gql`
   query posts($username: String) {
     posts(username: $username) {
@@ -8,13 +19,7 @@ export const QUERY_POSTS = gql`
       title
       createdAt
       username
-      image{
-        url
-      }
-      category{
-        _id
-        name
-      }
+     
       reactionCount
       reactions {
         _id
