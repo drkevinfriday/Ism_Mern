@@ -1,11 +1,12 @@
 const faker = require('faker');
 
 const db = require('../config/connection');
-const { Post, User } = require('../models');
+const { Post, User,Category } = require('../models');
 
 db.once('open', async () => {
   await Post.deleteMany({});
   await User.deleteMany({});
+  await Category.deleteMany({});
 
   // create user data
   const userData = [];
@@ -74,8 +75,19 @@ db.once('open', async () => {
   }
 
 
-
+  const categories = [
+    {categoryName: "Sexism"},
+    {categoryName: "hetroism"},
+    {categoryName: "1ism"},
+    {categoryName: "2ism"},
+    {categoryName: "3ism"},
+    {categoryName: "4ism"},
+   
+  ];
+  const result = await Category.collection.insertMany(categories);
   
+
+  console.log(result)
 
   console.log('all done!');
   process.exit(0);

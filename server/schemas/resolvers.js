@@ -1,4 +1,4 @@
-const { User, Post } = require('../models');
+const { User, Post, Category} = require('../models');
 const { AuthenticationError } = require('apollo-server-express')
 const { signToken }= require('../utils/auth')
 const resolvers = {
@@ -30,6 +30,10 @@ const resolvers = {
             .select('-__v -password')
             .populate('empaths')
             .populate('posts');
+        },
+        category: async () => {
+            return Category.find()
+            ;
         },
         // get a user by username
         user: async (parent, { username }) => {
