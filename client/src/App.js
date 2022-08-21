@@ -16,8 +16,8 @@ import SinglePost from "./pages/SinglePost";
 import Profile from "./pages/Profile";
 import Signup from "./pages/Signup";
 // Header and Footer need to be rendered through a diff component
-import Footer from "./components/Footer/index";
-import Header from "./components/Header/index";
+import Footer from "./components/Footer";
+import Header from "./components/Header";
 import "./index.css";
 
 // ESTABLISH CONNECTION WITH BACK END SERVER GRAPHQL ENDPOINT
@@ -46,6 +46,7 @@ const client = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={client}>
+      <Header />
       <Router>
         <div className="flex-column justify-flex-start min-100-vh">
           <div className="container">
@@ -53,19 +54,17 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<Signup />} />
-                  <Route path="/profile">
-                    <Route path=":username" element={<Profile />} />
-                    <Route path="" element={<Profile />} />
-                  </Route>
-                  <Route path="/post">
-                    <Route path=":id" element={<SinglePost />} />
-                    <Route path="" element={<SinglePost />} />
-                  </Route>
+              <Route path="/profile">
+                <Route path=":username" element={<Profile />} />
+                <Route path="" element={<Profile />} />
+              </Route>
+              <Route path="/post/:id" element={<SinglePost />} />
               <Route path="*" element={<NoMatch />} />
             </Routes>
           </div>
         </div>
       </Router>
+      <Footer />
     </ApolloProvider>
   );
 }
