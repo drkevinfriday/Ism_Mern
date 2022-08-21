@@ -14,11 +14,12 @@ const Home = () => {
     // OBJECT DESTRUCTURING TO EXTRACT FROM USEQUERY HOOK
     const { data: userData } = useQuery(QUERY_ME_BASIC);
     const posts = data?.posts || [];
+    console.log(data)
     const loggedIn = Auth.loggedIn();
     
     return (
       <main>
-        <Category></Category>
+        {/* <Category></Category> */}
         <CategoryBar></CategoryBar>
         <div className='container  shadow p-3 mb-5 bg-body rounded flex-row justify-space-between'>
         {loggedIn && (
