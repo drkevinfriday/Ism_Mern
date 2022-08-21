@@ -33,12 +33,9 @@ export const ADD_POST = gql`
       title
       createdAt
       username
-      image{
-        url
-      }
-      category{
+      category {
+        categoryName
         _id
-        name
       }
       reactionCount
       reactions {
@@ -57,12 +54,9 @@ export const REMOVE_POST = gql`
       title
       createdAt
       username
-      image{
-        url
-      }
-      category{
+      category {
+        categoryName
         _id
-        name
       }
       reactionCount
       reactions {
