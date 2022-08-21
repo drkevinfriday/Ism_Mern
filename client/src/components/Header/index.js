@@ -11,22 +11,22 @@ const Header = () => {
   return (
     <header className="bg-secondary mb-4 py-2 flex-row align-center">
       <div className="container flex-row justify-space-between-lg justify-center align-center">
-        <Link to="/">
+        <a href="/">
           <h1>ISM</h1>
-        </Link>
+        </a>
 
         <nav className="text-center">
           {Auth.loggedIn() ? (
             <>
-              <Link to="/profile">Hey You're Logged In 🤩! Woo Hoo!</Link>
+              <a href="/profile">Hey You're Logged In 🤩! Woo Hoo!</a>
               <a href="/" onClick={logout}>
                 Logout
               </a>
             </>
           ) : (
             <>
-              <Link to="/login">Login</Link>
-              <Link to="/signup">Signup</Link>
+              <a href="/login">Login</a>
+              <a href="/signup">Signup</a>
             </>
           )}
         </nav>
