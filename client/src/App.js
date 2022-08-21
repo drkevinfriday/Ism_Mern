@@ -8,17 +8,17 @@ import {
 } from "@apollo/client";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 // MIDDLEWARE TO RETRIEVE TOKEN
-import { setContext } from '@apollo/client/link/context';
-import Login from './pages/Login';
+import { setContext } from "@apollo/client/link/context";
+import Login from "./pages/Login";
 import Home from "./pages/Home";
-import NoMatch from './pages/NoMatch';
-import SinglePost from './pages/SinglePost';
-import Profile from './pages/Profile';
-import Signup from './pages/Signup';
+import NoMatch from "./pages/NoMatch";
+import SinglePost from "./pages/SinglePost";
+import Profile from "./pages/Profile";
+import Signup from "./pages/Signup";
 // Header and Footer need to be rendered through a diff component
-import Footer from "./components/Footer";
-import Header from "./components/Header";
-import './index.css';
+import Footer from "./components/Footer/index";
+import Header from "./components/Header/index";
+import "./index.css";
 
 // ESTABLISH CONNECTION WITH BACK END SERVER GRAPHQL ENDPOINT
 const httpLink = createHttpLink({
@@ -42,15 +42,12 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
-
-
 // REMINDER THAT WE ARE PASSING CLIENT VARIABLE IN AS THE VALUE OF THE CLIENT PROP
 function App() {
   return (
-  <ApolloProvider client={client}>
+    <ApolloProvider client={client}>
       <Router>
         <div className="flex-column justify-flex-start min-100-vh">
-        
           <div className="container">
             <Routes>
               <Route path="/" element={<Home />} />
@@ -64,7 +61,6 @@ function App() {
               <Route path="*" element={<NoMatch />} />
             </Routes>
           </div>
-          
         </div>
       </Router>
     </ApolloProvider>

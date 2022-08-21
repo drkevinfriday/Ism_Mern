@@ -7,6 +7,7 @@ const Header = () => {
     event.preventDefault();
     Auth.logout();
   };
+
   return (
     <header className="bg-secondary mb-4 py-2 flex-row align-center">
       <div className="container flex-row justify-space-between-lg justify-center align-center">
@@ -17,7 +18,7 @@ const Header = () => {
         <nav className="text-center">
           {Auth.loggedIn() ? (
             <>
-              <Link to="/profile">Hey You're Logined 🤩! Woo Hoo!</Link>
+              <Link to="/profile">Hey You're Logged In 🤩! Woo Hoo!</Link>
               <a href="/" onClick={logout}>
                 Logout
               </a>
