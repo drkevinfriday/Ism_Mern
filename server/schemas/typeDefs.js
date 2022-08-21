@@ -13,9 +13,15 @@ const typeDefs = gql
     postText: String
     createdAt: String
     username: String
+    category: [Category] 
     reactionCount: Int
     reactions: [Reaction]
     
+  }
+
+  type Category {
+    _id: ID
+    categoryName: String
   }
   type Reaction {
     _id: ID

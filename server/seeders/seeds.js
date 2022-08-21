@@ -14,25 +14,28 @@ db.once('open', async () => {
     const username = faker.internet.userName();
     const email = faker.internet.email(username);
     const password = faker.internet.password();
+    
 
     userData.push({ username, email, password });
   }
 
+ 
+
   const createdUsers = await User.collection.insertMany(userData);
 
-  // create friends/empaths data
+  // create posts
   for (let i = 0; i < 100; i += 1) {
     const randomUserIndex = Math.floor(Math.random() * createdUsers.ops.length);
     const { _id: userId } = createdUsers.ops[randomUserIndex];
 
-    let empathId = userId;
+    let postId = userId;
 
-    while (empathId === userId) {
+    while (postId === userId) {
       const randomUserIndex = Math.floor(Math.random() * createdUsers.ops.length);
-      empathId = createdUsers.ops[randomUserIndex];
+      postId = createdUsers.ops[randomUserIndex];
     }
 
-    await User.updateOne({ _id: userId }, { $addToSet: { empaths: empathId } });
+    await User.updateOne({ _id: userId }, { $addToSet: { posts: postId } });
   }
 
   // create posts
@@ -69,6 +72,10 @@ db.once('open', async () => {
       { runValidators: true }
     );
   }
+
+
+
+  
 
   console.log('all done!');
   process.exit(0);
