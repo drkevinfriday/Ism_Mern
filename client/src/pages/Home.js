@@ -19,7 +19,7 @@ const Home = () => {
     
     return (
       <main>
-        {/* <Category></Category> */}
+        <Category></Category> 
         <CategoryBar></CategoryBar>
         <div className='container  shadow p-3 mb-5 bg-body rounded flex-row justify-space-between'>
         {loggedIn && (
