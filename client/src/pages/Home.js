@@ -5,6 +5,7 @@ import PostList from '../components/PostList';
 import PostForm from '../components/PostForm';
 import { Link } from 'react-router-dom';
 import CategoryBar from '../components/CategoryBar';
+import Category from '../components/Category';
 import EmpathList from '../components/EmpathList';
 import Auth from '../utils/auth';
 
@@ -17,6 +18,7 @@ const Home = () => {
     
     return (
       <main>
+        <Category></Category>
         <CategoryBar></CategoryBar>
         <div className='container  shadow p-3 mb-5 bg-body rounded flex-row justify-space-between'>
         {loggedIn && (

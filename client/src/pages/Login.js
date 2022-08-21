@@ -1,63 +1,79 @@
+import React, { useState } from 'react';
 import { useMutation } from "@apollo/client";
-import { useState } from "react";
 import { LOGIN_USER } from "../utils/mutations";
 import Auth from "../utils/auth";
 
-function Login() {
-  const [login, { error }] = useMutation(LOGIN_USER);
-
-  const [inputs, setInputs] = useState({});
-
-  const handleChange = (event) => {
-    const name = event.target.name;
-    const value = event.target.value;
-    setInputs((values) => ({ ...values, [name]: value }));
-  };
-
-  // SUBMIT FORM
-  const handleFormSubmit = async (event) => {
-    event.preventDefault();
-
-    try {
-      const { data } = await login({
-        variables: { ...inputs },
+  const Login = (props) => {
+    const [formState, setFormState] = useState({ email: '', password: '' });
+    const [login, { error }] = useMutation(LOGIN_USER);
+  
+    // update state based on form input changes
+    const handleChange = (event) => {
+      const { name, value } = event.target;
+  
+      setFormState({
+        ...formState,
+        [name]: value,
       });
-
-      console.log(data);
-      Auth.login(data.login.token);
-    } catch (event) {
-      console.error(event);
-    }
+    };
+  
+    // submit form
+    const handleFormSubmit = async (event) => {
+      event.preventDefault();
+  
+      try {
+        const { data } = await login({
+          variables: { ...formState },
+        });
+  
+        Auth.login(data.login.token);
+      } catch (e) {
+        console.error(e);
+      }
+  
+      // clear form values
+      setFormState({
+        email: '',
+        password: '',
+      });
+    };
+  
+    return (
+      <main className="flex-row justify-center mb-4">
+        <div className="col-12 col-md-6">
+          <div className="card">
+            <h4 className="card-header">Login</h4>
+            <div className="card-body">
+              <form onSubmit={handleFormSubmit}>
+                <input
+                  className="form-input"
+                  placeholder="Your email"
+                  name="email"
+                  type="email"
+                  id="email"
+                  value={formState.email}
+                  onChange={handleChange}
+                />
+                <input
+                  className="form-input"
+                  placeholder="******"
+                  name="password"
+                  type="password"
+                  id="password"
+                  value={formState.password}
+                  onChange={handleChange}
+                />
+                <button className="btn d-block w-100" type="submit">
+                  Submit
+                </button>
+              </form>
+  
+              {error && <div>Login failed</div>}
+            </div>
+          </div>
+        </div>
+      </main>
+    );
   };
-
-  return (
-    <div>
-    <form onSubmit={handleFormSubmit}>
-      <label htmlFor="username">Username:</label>
-      <input
-        type="text"
-        value={inputs.username || ""}
-        onChange={handleChange}
-        id="username"
-        name="username"
-      />
-
-      <label htmlFor="password">Password:</label>
-      <input
-        type="text"
-        value={inputs.password || ""}
-        onChange={handleChange}
-        id="password"
-        name="password"
-        placeholder="******"
-      />
-      <button className="btn d-block w-100" type="submit">
-        Submit
-      </button>
-    </form>
-    {error && <div>Login failed</div>}
-    </div>
-  );
-}
-
+  
 export default Login;
