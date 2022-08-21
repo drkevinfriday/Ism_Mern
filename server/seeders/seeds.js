@@ -76,12 +76,14 @@ db.once('open', async () => {
 
 
   const categories = [
-    {categoryName: "Sexism"},
-    {categoryName: "hetroism"},
-    {categoryName: "1ism"},
-    {categoryName: "2ism"},
-    {categoryName: "3ism"},
-    {categoryName: "4ism"},
+    {categoryName: "Sexism" ,_id: "0"},
+    {categoryName: "Racism" ,_id: "1"},
+    {categoryName: "Anti-Semitism" ,_id: "2"},
+    {categoryName: "Colorism" ,_id: "3"},
+    {categoryName: "Classism" ,_id: "4"},
+    {categoryName: "Elitism" ,_id: "5"},
+    {categoryName: "Ableism " ,_id: "6"},
+ 
    
   ];
   const result = await Category.collection.insertMany(categories);

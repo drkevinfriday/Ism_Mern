@@ -1,4 +1,4 @@
-const { User, Post } =require('../models')
+const { User, Post, Category } =require('../models')
 // import the gql tagged template function
 const { gql } = require('apollo-server-express');
 
@@ -45,6 +45,10 @@ const typeDefs = gql
 
   type Query{
     posts(username: String): [Post]
+  }
+  type Query {
+    category: [Category]
+
   }
   
   type Query {

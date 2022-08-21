@@ -3,9 +3,12 @@ const dateFormat = require('../utils/dateFormat');
 
 const categorySchema = new Schema(
   {
+    _id:{
+        type: Number
+    },
     categoryName: {
-      type: [String],
-    }
+      type: String
+    },
   },
   {
     toJSON: {
@@ -16,6 +19,6 @@ const categorySchema = new Schema(
 
 
 
-const category = model('Category', categorySchema);
+const Category = model('Category', categorySchema);
 
-module.exports = category;
+module.exports = Category;
