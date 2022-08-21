@@ -112,7 +112,7 @@ export default function Category (props) {
           
         </Modal.Header>
         <Modal.Body>Posts:
-        <img src={collage} alt="collage" style={{width: "100%", height: "100%"}}/>
+        <img src={collage} alt="collage"/>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
