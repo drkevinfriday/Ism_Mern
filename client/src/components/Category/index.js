@@ -14,6 +14,7 @@ import antisemitism from '../../assets/images/anti-semitism.jpg';
 import elitism from '../../assets/images/elitism.jpg';
 import cissexism from '../../assets/images/cissexism.jpg';
 import colorism from '../../assets/images/colorism.jpg';
+import collage from '../../assets/images/collage.jpg';
 
 import  Description from '../SingleCategory/index.js';
 import { valueFromAST } from 'graphql';
@@ -111,8 +112,11 @@ export default function Category (props) {
             fontSize: "2.5rem",
           }}
           >Title</Modal.Title>
+          
         </Modal.Header>
-        <Modal.Body>Posts:</Modal.Body>
+        <Modal.Body>Posts:
+        <img src={collage} alt="collage" style={{width: "100%", height: "100%"}}/>
+        </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Close
