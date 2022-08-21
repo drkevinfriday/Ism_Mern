@@ -8,42 +8,24 @@ import { QUERY_POSTS } from '../../utils/queries';
 const CategoryBar = () => {
   return(
     <section>
-        <Marquee>
+        <Marquee
+        style= {{
+            width: "100%",
+            fontSize: "1.5rem",
+            fontFamily: "Misto",
+            color: "black",
+            textDecoration: "none",
+        }}
+        >
         <ul className="list-group list-group-horizontal">
             <li className="list-group item flex-fill">
-              <Link to={``}>Sexism</Link>
-            </li>
-            <li className="list-group item flex-fill">
-               <Link to={``}>Racism</Link>
-            </li>
-            <li className="list-group item flex-fill">
-               <Link to={``}>Ableism</Link>
-            </li>
-            <li className="list-group item flex-fill">
-             <Link to={``}>Anti-Semitism</Link>
-            </li>
-            <li className="list-group item flex-fill">
-             <Link to={``}>Colorism</Link>
-            </li>
-            <li className="list-group item flex-fill">
-             <Link to={``}>Cissexism</Link>
-            </li>
-            <li className="list-group item flex-fill">
-             <Link to={``}>Elitism</Link>
-            </li>
-            <li className="list-group item flex-fill">
-             <Link to={``}>Tokenism</Link>
+              Please  consider  donating  to  keep  the  site  running.
             </li>
         </ul>
         </Marquee>
     </section>
-    
-
   )
-}
-
+      }
 //)}
-
-
 
 export default CategoryBar;

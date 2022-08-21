@@ -20,6 +20,7 @@ import Footer from "./components/Footer";
 import Header from "./components/Header";
 import './index.css';
 import Category from "./components/Category";
+import SingleCategory from "./components/SingleCategory";
 
 // ESTABLISH CONNECTION WITH BACK END SERVER GRAPHQL ENDPOINT
 const httpLink = createHttpLink({
