@@ -39,13 +39,6 @@ export const QUERY_POST = gql`
       title
       createdAt
       username
-      image{
-        url
-      }
-      category{
-        _id
-        name
-      }
       reactionCount
       reactions {
         _id
@@ -73,18 +66,10 @@ export const QUERY_USER = gql`
         postText
         title
         createdAt
-        image{
-          url
-        }
-        category{
-          _id
-          name
-        }
+        
+      
         reactionCount
-        category{
-          _id
-          name
-        }
+       
       }
     }
   }
@@ -102,13 +87,8 @@ export const QUERY_ME = gql`
         postText
         title
         createdAt
-        image{
-        url
-      }
-      category{
-        _id
-        name
-      }
+      
+     
         reactionCount
         reactions {
           _id
