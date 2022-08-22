@@ -101,17 +101,10 @@ const Category = () =>{
     return (
         <>
         <div> 
-        <Row xs={1} md={2} className="g-4" 
+        <Row xs={1} md={2} className="g-4 category-cards" 
         activeindex={index}
         style= {{
-            position: "relative",
-            paddingTop: "100px",
-            paddingBottom: "100px",
-            paddingLeft: "100px",
-            paddingRight: "100px",
-            marginTop: "0",
-            marginLeft: "0",
-            marginRight: "0",
+       
         }}
         //onClick={handleSelect}
         >
@@ -122,7 +115,7 @@ const Category = () =>{
               >
                 <Card.Img variant="top" src={image} 
                 style={{
-                   
+                   borderRadius: "25px",
                 }}
                  />
                 <Card.Body
@@ -170,15 +163,15 @@ const Category = () =>{
              fontFamily: "Misto",
              fontSize: "2.5rem",
            }}
-           >Title:{posts.category}</Modal.Title>
+           >Category:{posts.category}</Modal.Title>
          </Modal.Header>
          <Modal.Body>
          <p></p>
-         <div className="col-12 mb-3">
+         <div className="">
           {loading ? (
           <div>Loading...</div>
           ) : ( 
-          <SingleCategory posts={posts} title="Some Feed for Thought(s)..." />
+          <SingleCategory posts={posts} title="" />
           )}
         </div>
          <img  alt="collage" style={{maxHeight: "100%", maxWidth: "100%"}}/>
@@ -187,9 +180,7 @@ const Category = () =>{
            <Button variant="secondary" onClick={handleClose}>
              Close
            </Button>
-           <Button variant="primary" onClick={handleClose}>
-             Save Changes
-           </Button>
+           
          </Modal.Footer>
         </Modal>
        </>

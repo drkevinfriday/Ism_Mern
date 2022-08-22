@@ -5,6 +5,7 @@ import { QUERY_POSTS, QUERY_ME } from "../../utils/queries";
 
 const PostForm = () => {
   const [postText, setText] = useState("");
+  const [title, setTitle] = useState("");
   const [characterCount, setCharacterCount] = useState(0);
 
   const [addPost, { error }] = useMutation(ADD_POST, {
@@ -38,13 +39,21 @@ const PostForm = () => {
     }
   };
 
+  const handleTitle = (event) => {
+    if (event.target.value.length <= 100) {
+      setTitle(event.target.value);
+      setCharacterCount(event.target.value.length);
+    }
+  };
+
   const handleFormSubmit = async event => {
     event.preventDefault();
 
     try {
       // ADD POST TO DB
       await addPost({
-        variables: { postText }
+        variables: { postText, title },
+         
       });
 
       // CLEAR FORM VALUE
@@ -56,23 +65,32 @@ const PostForm = () => {
   };
 
   return (
-    <div>
+    <div
+    style={{
+      position: "relative",
+      backgroundColor: "mintcream",
+      borderRadius: "25px",
+      padding: "10px",
+      
+      
+    }}>
     <div className="mb-3">
       <div className="mb-3">
+        <h3>Post Form:</h3>
           <label htmlFor="formFile" className="form-label"> Add Post Image</label>
-          <input className="form-control" type="file" id="formFile"></input>
+          <input className="form-control" type="file" id="formFile" ></input>
       </div>
       <div>
           <label htmlFor="Title" className="form-label">Title</label>
-          <input type="text" className="form-control" id="PostFormTitle" placeholder="What Shall We Call This?"></input>
+          <textarea  className="form-control" id="PostFormTitle" value={title} onChange={handleTitle} placeholder="What Shall We Call This?"></textarea>
       </div>
       <div className="mb-3">
-          <label htmlFor="story" className={`${characterCount === 2000 ? 'text-error' : ''}`} class="form-label">What's Your Story? Character Count: {characterCount}/2000 {error && <span className="ml-2">Something went wrong...</span>} </label>
+          <label htmlFor="story" className={`${characterCount === 2000 ? 'text-error' : ''}`} >What's Your Story? Character Count: {characterCount}/2000 {error && <span className="ml-2">Something went wrong...</span>} </label>
           <textarea className="form-control" id="Story"  value={postText} rows="3" onChange={handleChange}></textarea>
       </div>
       <div className="mb-3">
         
-      <button className="btn col-12 col-md-3" type="click" onClick={handleFormSubmit}>
+      <button className="btn col-12 col-md-3 post-btn" type="click" onClick={handleFormSubmit}>
         Submit
       </button>
 

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useMutation } from "@apollo/client";
 import { LOGIN_USER } from "../utils/mutations";
 import Auth from "../utils/auth";
+import { Modal } from 'react-bootstrap';
 
   const Login = (props) => {
     const [formState, setFormState] = useState({ email: '', password: '' });
@@ -39,10 +40,10 @@ import Auth from "../utils/auth";
     };
   
     return (
-      <main className="flex-row justify-center mb-4">
+      <div className="flex-row justify-center mb-4 ">
         <div className="col-12 col-md-6">
-          <div className="card">
-            <h4 className="card-header">Login</h4>
+          <div className="card login-form" style={{background: ''}}>
+            <h4 className="card-header" style={{}}>Login</h4>
             <div className="card-body">
               <form onSubmit={handleFormSubmit}>
                 <input
@@ -72,7 +73,7 @@ import Auth from "../utils/auth";
             </div>
           </div>
         </div>
-      </main>
+      </div>
     );
   };
   

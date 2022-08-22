@@ -115,10 +115,84 @@ p {
 	}
 }
 
-.modal-open {
-  background: transparent;
+
+
+/* Category Modal */
+.category-cards {
+  position: relative;
+  padding: 100px;
+  margin: "0",
+}
+
+@media screen and (max-width: 768px) {
+  .category-cards {
+    margin-top: 50%;
+    padding: none;
+  }
+}
+  
+
+.category-container {
+  text-align: center;
+  
   
 }
+
+.category-content {
+  transition: cubic-bezier(0.19, 1, 0.22, 1);
+  transition-delay: 300ms;
+  
+}
+/*
+.col-12 {
+  width: 75%;
+}
+*/
+
+.modal-open {
+  
+}
+
+.modal-content {
+  background-image: url("../src/assets/images/background.jpg");
+  
+}
+
+.modal-header {
+  border-bottom: none;
+  
+}
+
+.modal-footer {
+  border-top: none;
+}
+
+.modal-title {
+  text-align: center;
+  color: black;
+  font-weight: bolder;
+  font-size: 10vw;
+  font-family: Misto;
+}
+
+.btn-close {
+  color: white;
+  opacity: 1;
+}
+
+.btn {
+  background: white;
+  color: black;
+  border: none;
+  font-weight: 800;
+}
+
+.btn:hover {
+  background-color: pink;
+}
+
+
+/* Category Modal Ends*/
 
 .nav-link {
   font-family: Misto;
@@ -131,5 +205,109 @@ p {
   -ms-transform: skewX(-20deg);
   transform: skewX(-20deg); 
   font-family: Misto;
-  font-size: 1.3rem;
+  
 }
+
+/* Profile */
+
+.post-form {
+  
+}
+
+.profile-empath {
+  font-family: Misto;
+  font-size: 2rem;
+  color: white;
+  position: relative;
+}
+
+.profile-title {
+  font-family: Misto;
+  font-size: 3rem;
+  position: relative;
+  color: white;
+
+}
+
+.post-btn {
+  width: 100%; 
+}
+
+.post-btn:hover {
+  background-color: pink;
+  cursor: pointer;
+}
+
+.profile-posts {
+  color: white;
+  position: relative;
+  
+}
+
+.card {
+  color: black;
+  border-radius: 25px;
+  
+}
+
+.profile-div {
+  
+}
+
+
+/*
+.profile-div {
+  background-image: url("../src/assets/images/collage2.jpg");
+ width: 100%;
+}
+*/
+
+/* Profile Ends */
+
+/*
+.card-img-top {
+  border-radius: 50px;
+}
+
+.card-body {
+  border-radius: 50px;
+}
+
+.card {
+  border-radius: 50px;
+}
+*/
+
+.login-form:hover {
+  
+}
+
+.login-form {
+  width: 100%;
+  opacity: 0.9;
+  
+}
+
+.form-input {
+  width: 100%;
+}
+
+@keyframes cubic-bezier {
+  0% {
+    transform: scale(0.19);
+  }
+  50% {
+    transform: scale(1);
+  }
+  75% {
+    transform: scale(0.22);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+
+
+
+  

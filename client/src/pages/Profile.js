@@ -7,6 +7,8 @@ import { Navigate, useParams } from 'react-router-dom';
 import PostForm from '../components/PostForm';
 import Auth from '../utils/auth';
 
+import collage2 from '.././assets/images/collage2.jpg';
+import background2 from '.././assets/images/background2.jpg';
 
 const Profile = () => {
   const [addEmpath] = useMutation(ADD_EMPATH);
@@ -44,16 +46,12 @@ const Profile = () => {
     };
 
     return (
-      <div
-      style={{
-        marginTop: "40%"
-      }}
-      >
-        <div className="flex-row mb-3">
-          <h2 style={{textAlign:"left"}}
-          className="text-secondary p-3 display-inline-block">
-          Viewing {userParam ? `${user.username}'s` : 'Your'} Profile.
-          </h2>
+      <div style={{marginTop: ""}} className="profile-div">
+        <div className="flex-row mb-3"
+          style={{
+        }}
+        >
+          <img style={{position: 'fixed', width: '100%'}}  ></img> 
         </div>
         {userParam && (
           <button className="btn ml-auto" onClick={handleClick}>
@@ -61,8 +59,13 @@ const Profile = () => {
           </button>
         )}
         <div className="flex-row justify-space-between mb-3">
-          <div className="col-12 mb-3 col-lg-8">
-            <PostList posts={user.posts} title={`${user.username}'s Stories...`} />
+        <h2 className="profile-title">
+          Welcome back {user.username}!
+          
+          </h2>
+          <div className="mb-3 post-form">{!userParam && <PostForm />}</div>
+          <div className="col-12 mb-3 col-lg-8 profile-posts">
+            <PostList posts={user.posts} title={`Your Stories...`}/>
           </div>
           <div className="col-12 col-lg-3 mb-3">
             <EmpathList
@@ -72,9 +75,11 @@ const Profile = () => {
             />
             </div>
         </div>
-        <div className="mb-3">{!userParam && <PostForm />}</div>
+        
       </div>
     );
   };
+
+  // Viewing {userParam ? `${user.username}'s` : 'Your'} Profile.
 
   export default Profile;

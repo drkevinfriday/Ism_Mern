@@ -38,8 +38,8 @@ const SinglePost = (props) => {
   }
 
   return (
-    <div>
-      <div className="card mb-3">
+    <div style={{position: 'relative'}}>
+      <div className="card mb-3" style={{padding: '25px'}}>
         <p className="card-title">
           {post.title}
           <span style={{ fontWeight: 700 }} className="text-dark">

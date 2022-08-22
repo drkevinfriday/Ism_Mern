@@ -2,6 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 import { REMOVE_POST } from "../../utils/mutations";
+import Card from "react-bootstrap/Card";
+import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
 
 
 const PostList = ({ posts, title }) => {
@@ -26,15 +29,16 @@ const PostList = ({ posts, title }) => {
 */
 
   return (
-    <div>
+    <Row xs={1} md={2} lg={4} className="">
       <h3>{title}</h3>
       {posts &&
         posts.map((post) => (
-          <div key={post._id} className="card mb-3">
+          <Col>
+          <Card key={post._id} className="" >
             
-            <div className="card-body">
-            <h5 className="card-title">{post.title}</h5>  
-            <p className="card-subtitle" id={post._id}>
+            <Card.Body className="" >
+            <Card.Title className="">{post.title}</Card.Title>  
+            <p className="" id={post._id}>
               <Link
                 to={`/profile/${post.username}`}
               >
@@ -53,10 +57,11 @@ const PostList = ({ posts, title }) => {
                 </p>
               </Link>
               </div>
-            </div>
-          </div>
+            </Card.Body>
+          </Card>
+          </Col>
         ))}
-    </div>
+    </Row>
   );
 };
 

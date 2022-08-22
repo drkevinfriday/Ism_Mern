@@ -11,16 +11,15 @@ const Header = () => {
   return (
     <header className="mb-4 py-2 flex-row align-center">
       <div className="container flex-row justify-space-between-lg justify-center align-center">
-        
-        
-      <h1
+      <h1 className="logo"
           style={{
             fontSize: "12rem",
             fontFamily: "Misto",
             color: "black",
-            textAlign: "center",
+            width: "100%",
             position: "fixed",
-            top: "20%",
+            top: "25%",
+            
           }}
           >Anti -ISM</h1>
 
@@ -44,8 +43,9 @@ const Header = () => {
             </>
           ) : (
             <>
-              <a href="/login">Login</a>
-              <a href="/signup">Signup</a>
+              <a href="/" className="nav-link">Home</a>
+              <a href="/login" className="nav-link">Login</a>
+              <a href="/signup" className="nav-link">Signup</a>
             </>
           )}
         </div>
