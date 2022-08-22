@@ -2,7 +2,6 @@
 import { useQuery } from '@apollo/client';
 import { QUERY_POSTS, QUERY_ME_BASIC } from '../utils/queries';
 import PostList from '../components/PostList';
-import PostForm from '../components/PostForm';
 import { Link } from 'react-router-dom';
 import CategoryBar from '../components/CategoryBar';
 import Category from '../components/Category';
@@ -19,7 +18,7 @@ const Home = () => {
     
     return (
       <main>
-        {/* <Category></Category> */}
+         <Category></Category>
         <CategoryBar></CategoryBar>
         <div className='container  shadow p-3 mb-5 bg-body rounded flex-row justify-space-between'>
         {loggedIn && (

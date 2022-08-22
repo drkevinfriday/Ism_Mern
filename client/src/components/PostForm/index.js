@@ -56,17 +56,16 @@ const PostForm = () => {
   };
 
   return (
-    <div>
-      <div className="mb-3">
+    <form>
         <div className="mb-3">
-          <label for="formFile" className="form-label">
+          <label htmlFor="file"className="form-label">
             {" "}
             Add Post Image
           </label>
-          <input className="form-control" type="file" id="formFile"></input>
+          <input className="form-control disabled" type="file" id="formFile"></input>
         </div>
-        <div>
-          <label for="Title" className="form-label">
+        <div className="form-group">
+          <label htmlFor="Title" className="form-label">
             Title
           </label>
           <input
@@ -76,32 +75,22 @@ const PostForm = () => {
             placeholder="What Shall We Call This?"
           ></input>
         </div>
-        <div className="mb-3">
+        <div className="mb-3 form-group">
           <label
-            for="story"
-            className={`${characterCount === 2000 ? "text-error" : ""}`}
-            class="form-label"
+            className={`mt-3 form-label ${characterCount === 2000 ? "text-error" : ""}`}
           >
-            What's Your Story?
-            <br>
-              Character Count: {characterCount}/2000{" "}
+            What's Your Story? 
+            | Character Count: {characterCount}/2000{" "}
               {error && <span className="ml-2">Something went wrong...</span>}
-            </br>
           </label>
-          <textarea
-            className="form-control"
-            id="Story"
-            value=""
-            rows="3"
-            onChange={handleChange}
-          ></textarea>
-        </div>
-        <div className="mb-3">
+          <textarea className="form-control-plaintext" id="Story"  type="text" cols="20" rows="10" placeholder="So it started ..." onChange={handleChange}>
+          </textarea>
+          </div>
+        <div className="mt-4">
           <select className="form-select" aria-label="Pick A Category">
-            <option selected>Pick A Category</option>
             <option value="">Sexism</option>
             <option value="">Racism</option>
-            <option value="">Abeism</option>
+            <option value="">Ableism</option>
             <option value="">Anti-Semitism</option>
             <option value="">Colorism</option>
             <option value="">Cissexism</option>
@@ -109,16 +98,14 @@ const PostForm = () => {
             <option value="">Tokenism</option>
           </select>
         </div>
-
         <button
-          className="btn col-12 col-md-3"
+          className="mt-3 btn col-12 col-md-3 btn-primary"
           type="submit"
           onSubmit={handleFormSubmit}
         >
           Submit
         </button>
-      </div>
-    </div>
+    </form>
   );
 };
 
