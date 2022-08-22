@@ -2,10 +2,23 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <footer className="w-100 mt-auto bg-secondary p-4">
+    <footer className="w-100 mt-auto"
+    style={{
+      background: 'none',
+      
+    }}
+    >
       <div className="container">
-        <h2>❤️ Made with love by AnJuli, Vanessa, Kevin & Albalicia</h2>
-        &copy; 2022 Anti-Ism App
+        <p
+        style={{
+          fontSize: "5vw",
+          
+          color: "black",
+          textAlign: "center",
+          marginTop: "2rem",
+        }}
+        >❤️ Made with love by AnJuli, Vanessa, Kevin & Albalicia &copy; 2022 Anti-Ism App</p>
+        
       </div>
     </footer>
   );

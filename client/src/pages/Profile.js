@@ -46,7 +46,7 @@ const Profile = () => {
     return (
       <div>
         <div className="flex-row mb-3">
-          <h2 className="bg-light text-secondary p-3 display-inline-block">
+          <h2 className="text-secondary p-3 display-inline-block text-center">
           Viewing {userParam ? `${user.username}'s` : 'Your'} Profile.
           </h2>
         </div>

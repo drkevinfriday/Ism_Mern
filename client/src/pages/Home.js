@@ -20,10 +20,6 @@ const Home = () => {
     return (
       <main>
         <Category></Category> 
-        <CategoryBar></CategoryBar>
-
-        
-
     </main>
   );
 };
