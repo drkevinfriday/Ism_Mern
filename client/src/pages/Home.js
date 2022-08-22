@@ -21,29 +21,35 @@ const Home = () => {
       <main>
         <Category></Category> 
         <CategoryBar></CategoryBar>
-        <div className='container  shadow p-3 mb-5 bg-body rounded flex-row justify-space-between'>
-        {loggedIn && (
-         <Link to="/profile">
-         <h2>Write A Story ✍🏾...</h2>
-       </Link>
-        )}
-          <div className={`col-12 mb-3 ${loggedIn && 'col-lg-8'}`}>{loading ? (
-          <div>Loading Your Daily Feed ✌🏾...</div>
-            ) : (
-                <PostList posts={posts} title="Here's Your Opportunity To Read Stories" />
-            )}</div>
-            {loggedIn && userData ? (
-            <div className=" container col-12 col-lg-3 mb-3">
-              <EmpathList
-                username={userData.me.username}
-                empathCount={userData.me.empathCount}
-                empaths={userData.me.empaths}
-              />
-            </div>
-          ) : null}
-      </div>
+
+        
+
     </main>
   );
 };
 
 export default Home;
+
+/*
+<div className='container  shadow p-3 mb-5 bg-body rounded flex-row justify-space-between'>
+{loggedIn && (
+ <Link to="/profile">
+ <h2>Write A Story ✍🏾...</h2>
+</Link>
+)}
+  <div className={`col-12 mb-3 ${loggedIn && 'col-lg-8'}`}>{loading ? (
+  <div>Loading Your Daily Feed ✌🏾...</div>
+    ) : (
+        <PostList posts={posts} title="Here's Your Opportunity To Read Stories" />
+    )}</div>
+    {loggedIn && userData ? (
+    <div className=" container col-12 col-lg-3 mb-3">
+      <EmpathList
+        username={userData.me.username}
+        empathCount={userData.me.empathCount}
+        empaths={userData.me.empaths}
+      />
+    </div>
+  ) : null}
+</div>
+*/

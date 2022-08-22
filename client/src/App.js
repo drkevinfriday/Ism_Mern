@@ -54,10 +54,14 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<Signup />} />
+
               <Route path="/profile">
                 <Route path=":username" element={<Profile />} />
                 <Route path="" element={<Profile />} />
               </Route>
+                
+               
+              
               <Route path="/post/:id" element={<SinglePost />} />
               <Route path="*" element={<NoMatch />} />
             </Routes>

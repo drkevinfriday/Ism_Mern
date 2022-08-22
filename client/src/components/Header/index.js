@@ -18,7 +18,7 @@ const Header = () => {
             textDecoration: "none",
             color: "black",
             textAlign: "center",
-            background: "white",
+            
           }}
           >Anti -ISM</h1>
 

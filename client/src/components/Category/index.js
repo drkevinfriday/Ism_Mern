@@ -17,16 +17,22 @@ import colorism from '../../assets/images/colorism.jpg';
 import collage from '../../assets/images/collage.jpg';
 import collage2 from '../../assets/images/collage2.jpg';
 
+import { useQuery } from '@apollo/client';
+import { QUERY_POSTS } from '../../utils/queries';
+
+import SingleCategory from '../SingleCategory';
+
 //function Category () {
     //const [ currentCategory, setCurrentCategory ] = useState();
-export default function Category () {
-
+const Category = () =>{
+  
+//console.log(posts);
 
     let [photos] = useState ([
         
         {
         id: 1,
-        category: 'Sexism',
+        name: 'Sexism',
         image: sexism,
         image2: collage,
         url: '/category/sexism',
@@ -34,7 +40,7 @@ export default function Category () {
         },
         {
         id: 2,
-        category: 'Racism',
+        name: 'Racism',
         image: racism,
         image2: collage2,
         url: '/category/racism',
@@ -42,42 +48,42 @@ export default function Category () {
         },
         {
         id: 3,
-        category: 'Ableism',
+        name: 'Ableism',
         image: ableism,
         url: 'category/ableism',
         description: 'Ableism...'
         },
         {
         id: 4,
-        category: 'Anti-Semitism',
+        name: 'Anti-Semitism',
         image: antisemitism,
         url: 'category/antisemitism',
         description: 'Anti-Semitism...'
         },
         {
         id: 5,
-        category: 'Tokenism',
+        name: 'Tokenism',
         image: tokenism,
         url: 'category/tokenism',
         description: 'Tokenism...'
         },
         {
         id: 6,
-        category: 'Colorism',
+        name: 'Colorism',
         image: colorism,
         url: 'category/colorism',
         description: 'Colorism is prejudice against people with a darker skin tone and is characterized by its occurrence within the same ethnic or racial community.'
         },
         {
         id: 7,
-        category: 'Cissexism',
+        name: 'Cissexism',
         image: cissexism,
         url: 'category/cissexism',
         description: 'Cissexism...'
         },
         {
         id: 8,
-        category: 'Elitism',
+        name: 'Elitism',
         image: elitism,
         url: 'category/elitism',
         description: 'Elitism exists in the form of a patriarchal system in which the highest status is assigned to the most privileged. Elitism is a form of discrimination on the basis of social standing.'
@@ -102,13 +108,17 @@ export default function Category () {
 
       
     return (
+     
         <>
+
+
         <div> 
+        
+
         <Row xs={1} md={2} className="g-4" 
         activeindex={index}
         style= {{
-            background: "linear-gradient(-45deg, #b7dbf9, #aa4cd9, #fff9bf, #f8a097",
-            animation: "gradient 3s ease-in-out infinite",
+            
             position: "relative",
             paddingTop: "100px",
             paddingBottom: "100px",
@@ -122,7 +132,8 @@ export default function Category () {
         }}
         //onClick={handleSelect}
         >
-           {photos.map(({ image, category, id, url, description}) => (  
+         
+           {photos.map(({ image, name, id, url, description, image2}) => (  
           //{Array.from({ length: 4 }).map((_, idx) => (
             
             <Col key={id}>
@@ -130,7 +141,7 @@ export default function Category () {
               >
                 <Card.Img variant="top" src={image} 
                 style={{
-                    maxHeight: '75%'
+                   
                 }}
                  />
                 
@@ -150,7 +161,7 @@ export default function Category () {
                     
                   }}
                   >
-                  {category}</a>
+                  {name}</a>
                   
                   
                 </Card.Body>
@@ -159,23 +170,39 @@ export default function Category () {
             </Col>
 
 
-          
+
           ))}
               
         </Row>  
         <Child ></Child> 
+        
+        
        </div>
+       
        </>
+       
     );
+    
+    function Child () { 
+      const { loading, data } = useQuery(QUERY_POSTS);
+      const posts = data?.posts || [];
+      console.log(posts.category);
 
-    function Child ( {}) { 
-      
+     
+      //console.log(posts);
+      //console.log(category);
+      if (posts.category == null) {
       return (
          
+        
           
-
-         <Modal show={show} onHide={handleClose} fullscreen={fullscreen} >
-           
+<>
+         <Modal show={show} onHide={handleClose} fullscreen={fullscreen} 
+         style={{
+          background: "transparent",
+         }}
+         >
+             
            
          <Modal.Header closeButton>
          
@@ -184,11 +211,23 @@ export default function Category () {
              fontFamily: "Misto",
              fontSize: "2.5rem",
            }}
-           >Title</Modal.Title>
+           >Title:{posts.category}</Modal.Title>
            
          </Modal.Header>
-         <Modal.Body>Posts:
-         <img src={collage} alt="collage" style={{maxHeight: "100%", maxWidth: "100%"}}/>
+         <Modal.Body>
+         <p></p>
+
+         <div className="col-12 mb-3">
+          {loading ? (
+          <div>Loading...</div>
+          ) : (
+            
+          <SingleCategory posts={posts} title="Some Feed for Thought(s)..." />
+          
+          )}
+        </div>
+
+         <img  alt="collage" style={{maxHeight: "100%", maxWidth: "100%"}}/>
          </Modal.Body>
          <Modal.Footer>
            <Button variant="secondary" onClick={handleClose}>
@@ -198,11 +237,13 @@ export default function Category () {
              Save Changes
            </Button>
          </Modal.Footer>
-         
+          
            </Modal>
-       
+       </>
          )
-     
-     
-      }
-    }
+        
+         }
+      }}
+    
+  
+export default Category;

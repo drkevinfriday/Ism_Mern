@@ -1,4 +1,3 @@
-//import { useParams } from 'react-router-dom';
 import PostList from '../components/PostList';
 import EmpathList from '../components/EmpathList';
 import { useQuery,useMutation } from '@apollo/client';

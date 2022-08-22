@@ -84,7 +84,7 @@ export const QUERY_USER = gql`
         reactionCount
         category{
           _id
-          name
+          categoryName
         }
       }
     }

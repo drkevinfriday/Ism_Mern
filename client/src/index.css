@@ -32,11 +32,14 @@ code {
 
 * {
   box-sizing: border-box;
+  
 }
 
 html,
 body {
   min-height: 100%;
+  background: linear-gradient(-45deg, #b7dbf9, #aa4cd9, #fff9bf, #f8a097);
+  animation: gradient 5s ease-in-out infinite;
 }
 
 body {
@@ -110,3 +113,7 @@ p {
 	}
 }
 
+.modal-open {
+  background: transparent;
+  
+}
