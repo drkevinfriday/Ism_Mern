@@ -16,18 +16,14 @@ import cissexism from '../../assets/images/cissexism.jpg';
 import colorism from '../../assets/images/colorism.jpg';
 import collage from '../../assets/images/collage.jpg';
 import collage2 from '../../assets/images/collage2.jpg';
-
 import { useQuery } from '@apollo/client';
 import { QUERY_POSTS } from '../../utils/queries';
-
 import SingleCategory from '../SingleCategory';
 
 //function Category () {
     //const [ currentCategory, setCurrentCategory ] = useState();
 const Category = () =>{
-  
 //console.log(posts);
-
     let [photos] = useState ([
         
         {
@@ -100,42 +96,26 @@ const Category = () =>{
 
     const [index, setIndex] = useState(0);
     //const [offset, setOffset] = useState(0);
-    
-  
-  
 
-    
-
-      
     return (
-     
         <>
-
-
         <div> 
-        
-
         <Row xs={1} md={2} className="g-4" 
         activeindex={index}
         style= {{
-            
             position: "relative",
             paddingTop: "100px",
             paddingBottom: "100px",
             paddingLeft: "100px",
             paddingRight: "100px",
-            
             marginTop: "0",
             marginLeft: "0",
             marginRight: "0",
-            
         }}
         //onClick={handleSelect}
         >
-         
            {photos.map(({ image, name, id, url, description, image2}) => (  
           //{Array.from({ length: 4 }).map((_, idx) => (
-            
             <Col key={id}>
               <Card 
               >
@@ -144,11 +124,9 @@ const Category = () =>{
                    
                 }}
                  />
-                
                 <Card.Body
                 style={{
                     background: "transparent",
-                    
                 }}>
                    <a variant="primary" onClick={handleShow} //onClick={handleShow}//onClick={() => Description()} // to={url}
                   style= {{
@@ -158,29 +136,17 @@ const Category = () =>{
                     color: '#2f2f2f',
                     letterSpacing: '2px',
                     cursor: 'pointer',
-                    
                   }}
                   >
-                  {name}</a>
-                  
-                  
+                  {name}</a> 
                 </Card.Body>
-               
               </Card>
             </Col>
-
-
-
-          ))}
-              
+          ))}   
         </Row>  
         <Child ></Child> 
-        
-        
        </div>
-       
-       </>
-       
+       </>  
     );
     
     function Child () { 
@@ -188,22 +154,14 @@ const Category = () =>{
       const posts = data?.posts || [];
       console.log(posts.category);
 
-     
-      //console.log(posts);
-      //console.log(category);
       if (posts.category == null) {
-      return (
-         
-        
-          
-<>
+      return (  
+        <>
          <Modal show={show} onHide={handleClose} fullscreen={fullscreen} 
          style={{
           background: "transparent",
          }}
          >
-             
-           
          <Modal.Header closeButton>
          
            <Modal.Title
@@ -212,21 +170,16 @@ const Category = () =>{
              fontSize: "2.5rem",
            }}
            >Title:{posts.category}</Modal.Title>
-           
          </Modal.Header>
          <Modal.Body>
          <p></p>
-
          <div className="col-12 mb-3">
           {loading ? (
           <div>Loading...</div>
-          ) : (
-            
+          ) : ( 
           <SingleCategory posts={posts} title="Some Feed for Thought(s)..." />
-          
           )}
         </div>
-
          <img  alt="collage" style={{maxHeight: "100%", maxWidth: "100%"}}/>
          </Modal.Body>
          <Modal.Footer>
@@ -237,13 +190,9 @@ const Category = () =>{
              Save Changes
            </Button>
          </Modal.Footer>
-          
-           </Modal>
+        </Modal>
        </>
-         )
-        
-         }
+         )}
       }}
     
-  
 export default Category;
