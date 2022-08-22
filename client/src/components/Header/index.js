@@ -11,22 +11,33 @@ const Header = () => {
   return (
     <header className="mb-4 py-2 flex-row align-center">
       <div className="container flex-row justify-space-between-lg justify-center align-center">
+        <a className="nav-link" href="/"
+        style={{
+          textDecoration: "none",
+        }}>
       <h1
           style={{
             fontSize: "5rem",
             fontFamily: "Misto",
-            textDecoration: "none",
             color: "black",
             textAlign: "center",
             
           }}
-          >Anti -ISM</h1>
+          >Anti -ISM</h1></a>
 
         <nav className="text-center">
           {Auth.loggedIn() ? (
             <>
-              <a href="/profile">Hey You're Logged In 🤩! Woo Hoo!</a>
-              <a href="/" onClick={logout}>
+              <a className="nav-link"
+              style={{
+                textDecoration: "none",
+                fontFamily: "Misto",
+                color: "black",
+              }}
+              href="/profile">My Profile</a>
+              <a href="/" onClick={logout}
+              className="nav-link"
+              >
                 Logout
               </a>
             </>
