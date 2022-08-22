@@ -11,22 +11,20 @@ const Header = () => {
   return (
     <header className="mb-4 py-2 flex-row align-center">
       <div className="container flex-row justify-space-between-lg justify-center align-center">
-        <a className="" href="/"
-        style={{
-          textDecoration: "none",
-        }}>
+        
+        
       <h1
           style={{
             fontSize: "12rem",
             fontFamily: "Misto",
             color: "black",
-            
+            textAlign: "center",
             position: "fixed",
-            top: "15%",
+            top: "20%",
           }}
-          >Anti -ISM</h1></a>
+          >Anti -ISM</h1>
 
-        <nav className="" style={{textAlign:"right"}}>
+        <div className="" style={{textAlign:"right", marginRight:"0px"}}>
           {Auth.loggedIn() ? (
             <>
               <a className="nav-link"
@@ -42,6 +40,7 @@ const Header = () => {
                 Logout
               </a>
               <a href="/login" className="nav-link">Login</a>
+              <a href="/" className="nav-link">Home</a>
             </>
           ) : (
             <>
@@ -49,7 +48,7 @@ const Header = () => {
               <a href="/signup">Signup</a>
             </>
           )}
-        </nav>
+        </div>
       </div>
     </header>
   );

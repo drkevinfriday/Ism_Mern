@@ -44,9 +44,14 @@ const Profile = () => {
     };
 
     return (
-      <div>
+      <div
+      style={{
+        marginTop: "40%"
+      }}
+      >
         <div className="flex-row mb-3">
-          <h2 className="text-secondary p-3 display-inline-block text-center">
+          <h2 style={{textAlign:"left"}}
+          className="text-secondary p-3 display-inline-block">
           Viewing {userParam ? `${user.username}'s` : 'Your'} Profile.
           </h2>
         </div>

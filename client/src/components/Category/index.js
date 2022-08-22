@@ -25,7 +25,21 @@ import SingleCategory from '../SingleCategory';
 const Category = () =>{
 //console.log(posts);
     let [photos] = useState ([
-        
+      {
+        id: 2,
+        name: 'Racism',
+        image: racism,
+        image2: collage2,
+        url: '/category/racism',
+        description: 'Racism...'
+        },
+      {
+        id: 4,
+        name: 'Anti-Semitism',
+        image: antisemitism,
+        url: 'category/antisemitism',
+        description: 'Anti-Semitism...'
+        },
         {
         id: 1,
         name: 'Sexism',
@@ -34,14 +48,7 @@ const Category = () =>{
         url: '/category/sexism',
         description: 'Sexism is form of discrimination on the basis of sex. Women are more likely to experience sexism as well as other marginalized genders. Sexism encourages a hostile environment which not only affects women in the workplace but also perceived gender roles that are perpetuated in society.'
         },
-        {
-        id: 2,
-        name: 'Racism',
-        image: racism,
-        image2: collage2,
-        url: '/category/racism',
-        description: 'Racism...'
-        },
+       
         {
         id: 3,
         name: 'Ableism',
@@ -49,13 +56,7 @@ const Category = () =>{
         url: 'category/ableism',
         description: 'Ableism...'
         },
-        {
-        id: 4,
-        name: 'Anti-Semitism',
-        image: antisemitism,
-        url: 'category/antisemitism',
-        description: 'Anti-Semitism...'
-        },
+      
         {
         id: 5,
         name: 'Tokenism',
@@ -132,7 +133,7 @@ const Category = () =>{
                   style= {{
                     textDecoration: 'none',
                     fontFamily: 'Misto',
-                    fontSize: '3vw',
+                    fontSize: '2.7vw',
                     color: '#2f2f2f',
                     letterSpacing: '2px',
                     cursor: 'pointer',
