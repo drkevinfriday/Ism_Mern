@@ -68,15 +68,20 @@ const resolvers = {
             const token = signToken(user)
             return {token, user};
         },
-        addPost: async (parents,args, context)=> {
+        addPost: async (parent,args, context)=> {
             if (context.user) {
                 const post = await Post.create({...args, username: context.user.username});
 
                 await User.findOneAndUpdate(
                     {_id: context.user._id},
                     { $push: {posts:post._id} },
+<<<<<<< HEAD
                     //{$push: {category:{categoryName}}},
                     //{$push: {posts:post.title}},
+=======
+                    {$push: {category:{categoryName}}},
+                    // {$push: {posts: post.title}},
+>>>>>>> 8ad58f2aaa419dd41c47789d69c2eb644c8b63b6
                     {new: true}
                 );
                 return post;

@@ -2,8 +2,12 @@ import React, { useState, useReducer } from "react";
 import { useMutation } from "@apollo/client";
 import { ADD_POST } from "../../utils/mutations";
 import { QUERY_POSTS, QUERY_ME } from "../../utils/queries";
+<<<<<<< HEAD
 //import { Link } from "react-router-dom";
 //import Category from "../Category";
+=======
+import { Link } from "react-router-dom";
+>>>>>>> 8ad58f2aaa419dd41c47789d69c2eb644c8b63b6
 
 const PostForm = () => {
   const [postText, setText] = useState("");
@@ -111,7 +115,7 @@ const PostForm = () => {
           <textarea  className="form-control" id="PostFormTitle" value={title} onChange={handleTitle} placeholder="What Shall We Call This?"></textarea>
       </div>
       <div className="mb-3">
-          <label htmlFor="story" className={`${characterCount === 2000 ? 'text-error' : ''}`} >What's Your Story? Character Count: {characterCount}/2000 {error && <span className="ml-2">Something went wrong...</span>} </label>
+          <label htmlFor="story" className="story">What's Your Story?</label>
           <textarea className="form-control" id="Story"  value={postText} rows="3" onChange={handleChange}></textarea>
       </div>
 
@@ -129,7 +133,12 @@ const PostForm = () => {
       */} 
 
       <div className="mb-3">
+<<<<<<< HEAD
       <button className="btn col-12 col-md-3 post-btn" type="click" onClick={handleFormSubmit}>
+=======
+        
+      <button className="btn col-12 col-md-3 post-btn" type="submit" onSubmit={handleFormSubmit}>
+>>>>>>> 8ad58f2aaa419dd41c47789d69c2eb644c8b63b6
         Submit
       </button>
       </div>
