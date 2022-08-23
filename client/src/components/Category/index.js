@@ -17,7 +17,8 @@ import colorism from '../../assets/images/colorism.jpg';
 import collage from '../../assets/images/collage.jpg';
 import collage2 from '../../assets/images/collage2.jpg';
 import { useQuery } from '@apollo/client';
-import { QUERY_POSTS } from '../../utils/queries';
+import { QUERY_POSTS, QUERY_CATEGORY } from '../../utils/queries';
+import { useParams } from 'react-router-dom';
 import SingleCategory from '../SingleCategory';
 
 //function Category () {
@@ -142,13 +143,26 @@ const Category = () =>{
        </div>
        </>  
     );
+
     
-    function Child () { 
+    function Child (props) { 
       const { loading, data } = useQuery(QUERY_POSTS);
       const posts = data?.posts || [];
-      console.log(posts.category);
-
-      if (posts.category == null) {
+      
+      const { id: _id } = useParams();
+      const { load, setLoad } = useQuery(QUERY_CATEGORY, {
+        variables: { id: _id},
+      });
+      const category = load?.category || {};
+      console.log(category);
+/*
+      const { id: _id } = useParams();
+      const { load, cat } = useQuery(QUERY_CATEGORY, {
+        variables: { id: _id},
+      });
+      const category = cat?.category || {};
+      console.log(category);
+*/
       return (  
         <>
          <Modal show={show} onHide={handleClose} fullscreen={fullscreen} 
@@ -163,8 +177,10 @@ const Category = () =>{
              fontFamily: "Misto",
              fontSize: "2.5rem",
            }}
-           >Category:{posts.category}</Modal.Title>
+           >Category:{}</Modal.Title>
+         
          </Modal.Header>
+        
          <Modal.Body>
          <p></p>
          <div className="">
@@ -185,6 +201,6 @@ const Category = () =>{
         </Modal>
        </>
          )}
-      }}
+      }
     
 export default Category;

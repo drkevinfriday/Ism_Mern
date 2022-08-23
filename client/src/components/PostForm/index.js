@@ -4,31 +4,15 @@ import { useParams } from 'react-router-dom';
 import { ADD_POST } from "../../utils/mutations";
 import { QUERY_POSTS, QUERY_ME, QUERY_CATEGORY } from "../../utils/queries";
 import { useQuery } from "@apollo/client";
+
 //import { Link } from "react-router-dom";
 //import Category from "../Category";
 
 const PostForm = (props) => {
   const [postText, setText] = useState("");
   const [title, setTitle] = useState("");
-  //const [category, setCategory] = useState("");
   const [characterCount, setCharacterCount] = useState(0);
-  
-  const { id: _id } = useParams();
-  const { loading, data } = useQuery(QUERY_CATEGORY, {
-    variables: { id: _id},
-  });
-
-  const  category  = data?.category || {};
-  console.log(category);
-  console.log(category[0].categoryName)
-
-  //console.log(category.categoryName);
-  //console.log(category.categoryName);
-  
-  //const categories = category.map((category));
-  //const [{ category: {categoryName} }]   = category;
-  
-
+ 
   const [addPost, { error }] = useMutation(ADD_POST, {
     update(cache, { data: { addPost } }) {
       try {
@@ -88,7 +72,16 @@ const PostForm = (props) => {
     }
   };
 
+  const { id: _id } = useParams();
+  const { loading, data } = useQuery(QUERY_CATEGORY, {
+    variables: { id: _id},
+  });
+
+  const category =  data?.category || {};
+  //console.log(category);
+  
   return (
+    <>
     <div
     style={{
       position: "relative",
@@ -112,19 +105,25 @@ const PostForm = (props) => {
           <label htmlFor="story" className="story">What's Your Story?</label>
           <textarea className="form-control" id="Story"  value={postText} rows="3" onChange={handleChange}></textarea>
       </div>
-
-      
-      <>
+     <div>
       <select>
         <option>Choose category</option>
-          {category.map((category) => (
-          <option key={category} value={category}>
-          {category.categoryName}
+          {Object.values(category).map((value, index) => {
+            //console.log(category[index].categoryName);
+            //console.log(category[key]._id);
+            console.log(value.categoryName);
+            return (
+          <option key={index} value={category.categoryName}>
+            {category[index].categoryName}
             </option>
-          ))}
+            );
+          }
+          )};
       </select>
-      </> 
-      
+        </div>    
+
+
+          
 
       <div className="mb-3">
       <button className="btn col-12 col-md-3 post-btn" type="click" onClick={handleFormSubmit}>
@@ -133,6 +132,7 @@ const PostForm = (props) => {
       </div>
       </div>
   </div>
+  </>
   );
 };
 
