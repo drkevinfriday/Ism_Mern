@@ -5,12 +5,19 @@ import { QUERY_POSTS, QUERY_ME } from "../../utils/queries";
 import { Link } from "react-router-dom";
 import Category from "../Category";
 
-const PostForm = () => {
+const Form = () => {
   const [postText, setText] = useState("");
   const [title, setTitle] = useState("");
-  
+  //const [state, dispatch] = useReducer(reducer, initialState);
   //const [category, setCategory] = useState("");
   const [characterCount, setCharacterCount] = useState(0);
+
+  const initialState = {
+    category: {
+      label: 'category',
+      value: '',
+    }
+  }
 
   const [addPost, { error }] = useMutation(ADD_POST, {
     update(cache, { data: { addPost } }) {
@@ -47,7 +54,6 @@ const PostForm = () => {
     if (event.target.value.length <= 100) {
       setTitle(event.target.value);
       setCharacterCount(event.target.value.length);
-      console.log(event.target.value);
     }
   };
 
@@ -58,7 +64,7 @@ const PostForm = () => {
       // ADD POST TO DB
       await addPost({
         variables: { postText, title },
-         
+        
       });
 
       // CLEAR FORM VALUE
@@ -69,6 +75,14 @@ const PostForm = () => {
     } catch (event) {
       console.error(event);
     }
+   
+        return posts.map(post => (
+            <div key={post.id}>
+                <h3>{post.title}</h3>
+                <p>{post.postText}</p>
+                <p>{post.category}</p>
+            </div>
+        ))
   };
 
   return (
@@ -96,9 +110,7 @@ const PostForm = () => {
           <textarea className="form-control" id="Story"  value={postText} rows="3" onChange={handleChange}></textarea>
       </div>
 
-      
-      {/*category
-
+      <>
       <select>
         <option>Choose category</option>
         {state.category.map((category) => (
@@ -107,17 +119,18 @@ const PostForm = () => {
             </option>
         ))}
       </select>
-      </> 
-      */} 
+      </>  
 
       <div className="mb-3">
       <button className="btn col-12 col-md-3 post-btn" type="click" onClick={handleFormSubmit}>
         Submit
       </button>
       </div>
+     
+      
       </div>
   </div>
   );
 };
 
-export default PostForm;
+export default Form;

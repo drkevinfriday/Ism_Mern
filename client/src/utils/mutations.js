@@ -24,10 +24,10 @@ export const ADD_USER = gql`
   }
 `;
 
-// CHANGED body TO postText 
+// CHANGED body TO postText // added title TESTING
 export const ADD_POST = gql`
-  mutation addPost($postText: String!) {
-    addPost(postText: $postText) {
+  mutation addPost($postText: String!, $title: String!) {
+    addPost(postText: $postText, title: $title) {
       _id
       postText
       title

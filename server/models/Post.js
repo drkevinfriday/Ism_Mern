@@ -10,6 +10,12 @@ const postSchema = new Schema(
       minlength: 1,
       maxlength: 280
     },
+    title: {
+      type: String,
+      required: 'You need to give a title!',
+      minlength: 1,
+      maxlength: 280
+    },
     createdAt: {
       type: Date,
       default: Date.now,

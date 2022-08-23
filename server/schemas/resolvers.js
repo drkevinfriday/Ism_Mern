@@ -75,8 +75,9 @@ const resolvers = {
                 await User.findOneAndUpdate(
                     {_id: context.user._id},
                     { $push: {posts:post._id} },
+                    //{$push: {category:{categoryName}}},
+                    //{$push: {posts:post.title}},
                     {new: true}
-
                 );
                 return post;
             }

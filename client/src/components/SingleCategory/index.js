@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 
 const SingleCategory = ({ posts, title, category }) => {
     //const category = posts.category;
+    console.log(posts);
   if (!posts.length) {
     return <h3>No Posts in this Category Yet</h3>;
   }
@@ -19,7 +20,7 @@ const SingleCategory = ({ posts, title, category }) => {
           }}
           >
             
-            <h3 className="card-header" style={{backgroundColor: 'white',borderRadius: '25px'}}>Post Title:{title}</h3>
+            <h3 className="card-header" style={{backgroundColor: 'white',borderRadius: '25px'}}>Post Title:{post.title}</h3>
             <img src={collage2} style={{ padding: '50px', borderRadius: '25px'}}></img>
             <p className="" style={{ }}>
               {post.username}</p>
