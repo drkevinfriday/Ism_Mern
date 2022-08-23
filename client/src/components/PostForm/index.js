@@ -11,6 +11,7 @@ import { useQuery } from "@apollo/client";
 const PostForm = (props) => {
   const [postText, setText] = useState("");
   const [title, setTitle] = useState("");
+  const [categoryName, setCategory] = useState("");
   const [characterCount, setCharacterCount] = useState(0);
  
   const [addPost, { error }] = useMutation(ADD_POST, {
@@ -51,6 +52,15 @@ const PostForm = (props) => {
       console.log(event.target.value);
     }
   };
+/*
+  const handleCategory = (event) => {
+    if (event.target.value.length <= 100) {
+      setTitle(event.target.value);
+      setCharacterCount(event.target.value.length);
+      console.log(event.target.value);
+    }
+  };
+  */
 
   const handleFormSubmit = async event => {
     event.preventDefault();
@@ -58,8 +68,7 @@ const PostForm = (props) => {
     try {
       // ADD POST TO DB
       await addPost({
-        variables: { postText, title },
-         
+        variables: { postText, title, categoryName },
       });
 
       // CLEAR FORM VALUE
@@ -112,8 +121,9 @@ const PostForm = (props) => {
             //console.log(category[index].categoryName);
             //console.log(category[key]._id);
             console.log(value.categoryName);
+            console.log(value._id);
             return (
-          <option key={index} value={category.categoryName}>
+          <option key={value._id} value={value.categoryName} >
             {category[index].categoryName}
             </option>
             );
