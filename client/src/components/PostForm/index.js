@@ -2,15 +2,34 @@ import React, { useState, useReducer } from "react";
 import { useMutation } from "@apollo/client";
 import { ADD_POST } from "../../utils/mutations";
 import { QUERY_POSTS, QUERY_ME } from "../../utils/queries";
-import { Link } from "react-router-dom";
-import Category from "../Category";
+//import { Link } from "react-router-dom";
+//import Category from "../Category";
 
 const PostForm = () => {
   const [postText, setText] = useState("");
   const [title, setTitle] = useState("");
-  
-  //const [category, setCategory] = useState("");
+  const [category, setCategory] = useState("");
   const [characterCount, setCharacterCount] = useState(0);
+
+  // TESTING CATEGORY
+  //const [state, dispatch] = useReducer(reducer, initialState);
+/*
+  const initialState = {
+    category: {
+      label: 'category',
+      value: '',
+    }
+  }
+
+  const reducer = (state, action) => {
+    switch (action.type) {
+      case "setCategory":
+      return { ...state, category: action.payload };
+      default:
+        return state;
+    }
+  }
+*/
 
   const [addPost, { error }] = useMutation(ADD_POST, {
     update(cache, { data: { addPost } }) {
@@ -96,12 +115,11 @@ const PostForm = () => {
           <textarea className="form-control" id="Story"  value={postText} rows="3" onChange={handleChange}></textarea>
       </div>
 
-      
-      {/*category
-
+      {/*Testing category
+      <>
       <select>
         <option>Choose category</option>
-        {state.category.map((category) => (
+        {category.map((category) => (
           <option key={category} value={category}>
             {category}
             </option>
