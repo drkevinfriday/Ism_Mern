@@ -33,7 +33,11 @@ const resolvers = {
         },
         category: async () => {
             return Category.find()
-            ;
+            
+        //category: async (parent, { categoryName }) => {
+                //const params = categoryName ? { categoryName } : {};
+                //return Category.find(params).sort({ categoryName });
+            //;
         },
         // get a user by username
         user: async (parent, { username }) => {

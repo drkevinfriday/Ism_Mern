@@ -1,37 +1,33 @@
 import React, { useState, useReducer } from "react";
 import { useMutation } from "@apollo/client";
+import { useParams } from 'react-router-dom';
 import { ADD_POST } from "../../utils/mutations";
-import { QUERY_POSTS, QUERY_ME } from "../../utils/queries";
+import { QUERY_POSTS, QUERY_ME, QUERY_CATEGORY } from "../../utils/queries";
+import { useQuery } from "@apollo/client";
 //import { Link } from "react-router-dom";
 //import Category from "../Category";
 
-const PostForm = () => {
+const PostForm = (props) => {
   const [postText, setText] = useState("");
   const [title, setTitle] = useState("");
   //const [category, setCategory] = useState("");
   const [characterCount, setCharacterCount] = useState(0);
+  
+  const { id: _id } = useParams();
+  const { loading, data } = useQuery(QUERY_CATEGORY, {
+    variables: { id: _id},
+  });
 
-  //const category = props.category;
-  //console.log(category);
-  // TESTING CATEGORY
-  //const [state, dispatch] = useReducer(reducer, initialState);
-/*
-  const initialState = {
-    category: {
-      label: 'category',
-      value: '',
-    }
-  }
+  const  category  = data?.category || {};
+  console.log(category);
+  console.log(category[0].categoryName)
 
-  const reducer = (state, action) => {
-    switch (action.type) {
-      case "setCategory":
-      return { ...state, category: action.payload };
-      default:
-        return state;
-    }
-  }
-*/
+  //console.log(category.categoryName);
+  //console.log(category.categoryName);
+  
+  //const categories = category.map((category));
+  //const [{ category: {categoryName} }]   = category;
+  
 
   const [addPost, { error }] = useMutation(ADD_POST, {
     update(cache, { data: { addPost } }) {
@@ -117,18 +113,18 @@ const PostForm = () => {
           <textarea className="form-control" id="Story"  value={postText} rows="3" onChange={handleChange}></textarea>
       </div>
 
-      {/*Testing category
+      
       <>
       <select>
         <option>Choose category</option>
-        {category.map((category) => (
+          {category.map((category) => (
           <option key={category} value={category}>
-            {category}
+          {category.categoryName}
             </option>
-        ))}
+          ))}
       </select>
       </> 
-      */} 
+      
 
       <div className="mb-3">
       <button className="btn col-12 col-md-3 post-btn" type="click" onClick={handleFormSubmit}>
