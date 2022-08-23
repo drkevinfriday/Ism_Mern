@@ -15,6 +15,11 @@ const postSchema = new Schema(
       minlength: 1,
       maxlength: 280
     },
+    category: {
+      type: String,
+      minlength: 1,
+      maxlength: 280
+    },
     createdAt: {
       type: Date,
       default: Date.now,
@@ -25,12 +30,12 @@ const postSchema = new Schema(
       required: true
     },
     reactions: [reactionSchema],
-    category: [
-      {
-        type: Schema.Types.ObjectId,
-        ref:'Category'
-      }
-    ]
+    // category: [
+    //   {
+    //     type: Number,
+    //     ref:'Category'
+    //   }
+    // ]
   },
   {
     toJSON: {

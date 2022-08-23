@@ -76,12 +76,14 @@ const resolvers = {
             if (context.user) {
                 const post = await Post.create({...args, username: context.user.username});
 
+                // const newPost = await Post.findOneAndUpdate(
+                //     {_id: post._id},
+                //     {$push: {category:args.categoryName}},
+                //     {new: true}
+                // );
                 await User.findOneAndUpdate(
                     {_id: context.user._id},
                     { $push: {posts:post._id} },
-
-                    //{$push: {category:{categoryName}}},
-                    //{$push: {posts:post.title}},
                     {new: true}
                 );
                 return post;

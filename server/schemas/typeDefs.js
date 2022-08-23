@@ -13,7 +13,7 @@ const typeDefs = gql
     postText: String
     createdAt: String
     username: String
-    category: [Category] 
+    category: String
     reactionCount: Int
     reactions: [Reaction] 
   }
@@ -46,7 +46,7 @@ const typeDefs = gql
     posts(username: String): [Post]
   }
   type Query {
-    category: [Category]
+    category: Category
 
   }
   
@@ -61,7 +61,7 @@ const typeDefs = gql
   type Mutation {
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
-    addPost(postText: String!, title: String!): Post
+    addPost(postText: String!, title: String!, category: String!): Post
     addReaction(postId: ID!, reactionBody: String!): Post
     addEmpath(EmpathId: ID!): User
   }
