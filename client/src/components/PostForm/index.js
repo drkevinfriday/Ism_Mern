@@ -2,19 +2,17 @@ import React, { useState, useReducer } from "react";
 import { useMutation } from "@apollo/client";
 import { ADD_POST } from "../../utils/mutations";
 import { QUERY_POSTS, QUERY_ME } from "../../utils/queries";
-<<<<<<< HEAD
 //import { Link } from "react-router-dom";
 //import Category from "../Category";
-=======
-import { Link } from "react-router-dom";
->>>>>>> 8ad58f2aaa419dd41c47789d69c2eb644c8b63b6
 
 const PostForm = () => {
   const [postText, setText] = useState("");
   const [title, setTitle] = useState("");
-  const [category, setCategory] = useState("");
+  //const [category, setCategory] = useState("");
   const [characterCount, setCharacterCount] = useState(0);
 
+  //const category = props.category;
+  //console.log(category);
   // TESTING CATEGORY
   //const [state, dispatch] = useReducer(reducer, initialState);
 /*
@@ -133,12 +131,7 @@ const PostForm = () => {
       */} 
 
       <div className="mb-3">
-<<<<<<< HEAD
       <button className="btn col-12 col-md-3 post-btn" type="click" onClick={handleFormSubmit}>
-=======
-        
-      <button className="btn col-12 col-md-3 post-btn" type="submit" onSubmit={handleFormSubmit}>
->>>>>>> 8ad58f2aaa419dd41c47789d69c2eb644c8b63b6
         Submit
       </button>
       </div>

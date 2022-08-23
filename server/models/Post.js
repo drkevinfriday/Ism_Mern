@@ -12,7 +12,6 @@ const postSchema = new Schema(
     },
     title: {
       type: String,
-      required: 'You need to give a title!',
       minlength: 1,
       maxlength: 280
     },
