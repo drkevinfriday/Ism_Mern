@@ -87,7 +87,7 @@ const resolvers = {
                     { $push: {posts:post._id} },
                     {new: true}
                 );
-                return newPost;
+                return post;
             }
             throw new AuthenticationError('You need to be logged in')
         },
