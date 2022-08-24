@@ -1,10 +1,7 @@
 const { User, Post, Category } =require('../models')
 // import the gql tagged template function
 const { gql } = require('apollo-server-express');
-
-
-
-// create our typeDefs 
+// create our typeDefs
 // deleted category and image from schema temporarily
 const typeDefs = gql
 `type Post {
@@ -13,11 +10,10 @@ const typeDefs = gql
     postText: String
     createdAt: String
     username: String
-    category: [Category] 
+    category: String
     reactionCount: Int
-    reactions: [Reaction] 
+    reactions: [Reaction]
   }
-
   type Category {
     _id: ID
     categoryName: String
@@ -36,20 +32,16 @@ const typeDefs = gql
     posts: [Post]
     empaths: [User]
   }
-
   type Auth {
     token: ID!
     user: User
   }
-
   type Query{
     posts(username: String): [Post]
   }
   type Query {
-    category: [Category]
-
+    category: Category
   }
-  
   type Query {
     me: User
     users: [User]
@@ -57,15 +49,13 @@ const typeDefs = gql
     posts(username: String): [Post]
     post(_id: ID!): Post
   }
-
   type Mutation {
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
-    addPost(postText: String!, title: String!, categoryName: String!): Post
+    addPost(postText: String!, title: String!, category: String!): Post
     addReaction(postId: ID!, reactionBody: String!): Post
     addEmpath(EmpathId: ID!): User
   }
 `;
-
 // export the typeDefs
 module.exports = typeDefs;
