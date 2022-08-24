@@ -32,14 +32,14 @@ const Category = () =>{
         image: racism,
         image2: collage2,
         url: '/category/racism',
-        description: 'Racism...'
+        description: 'Racism is the belief that different races possess distinct characteristics, abilities, or qualities, especially so as to distinguish them as inferior or superior to one another.'
         },
       {
         id: 2,
         name: 'Anti-Semitism',
         image: antisemitism,
         url: 'category/antisemitism',
-        description: 'Anti-Semitism...'
+        description: 'Anti-Semitism is hostility to or prejudice against Jewish people.'
         },
         {
         id: 3,
@@ -55,7 +55,7 @@ const Category = () =>{
         name: 'Ableism',
         image: ableism,
         url: 'category/ableism',
-        description: 'Ableism...'
+        description: 'Ableism is discrimination in favor of able-bodied people.'
         },
       
         {
@@ -63,7 +63,7 @@ const Category = () =>{
         name: 'Tokenism',
         image: tokenism,
         url: 'category/tokenism',
-        description: 'Tokenism...'
+        description: 'Tokenism the practice of making only a perfunctory or symbolic effort to do a particular thing, especially by recruiting a small number of people from underrepresented groups in order to give the appearance of sexual or racial equality within a workforce.'
         },
         {
         id: 6,
@@ -77,7 +77,7 @@ const Category = () =>{
         name: 'Cissexism',
         image: cissexism,
         url: 'category/cissexism',
-        description: 'Cissexism...'
+        description: 'Cissexism is prejudice or discrimination against transgender people.'
         },
         {
         id: 8,
