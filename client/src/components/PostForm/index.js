@@ -55,20 +55,14 @@ const PostForm = (props) => {
   };
 
   const handleCategory = (event) => {
-    //const userCategory = JSON.parse(event.target.value);
       setCategory(event.target.value);
-      
-      //console.log(event.target.value);
+      console.log(event.target.value);
     }
-  
   
   const handleFormSubmit = async event => {
     event.preventDefault();
     console.log('HELLO');
-    //window.location.href = "/profile";
     
-    
-
     try {
       // ADD POST TO DB
       await addPost({
@@ -80,25 +74,12 @@ const PostForm = (props) => {
       setTitle('');
       setCharacterCount(0);
       // return <Link to="/profile:username"></Link>
-      
       //return window.location.reload();
-
     } catch (event) {
       console.error(event);
     }
-    
   };
 
-  /*
-  const { id: _id } = useParams();
-  const { loading, data } = useQuery(QUERY_CATEGORY, {
-    variables: { id: _id},
-  });
-
-  const categoryName =  data?.category || {};
-  console.log(categoryName);
-  */
- 
   return (
     <>
     <div
@@ -107,8 +88,6 @@ const PostForm = (props) => {
       backgroundColor: "mintcream",
       borderRadius: "25px",
       padding: "10px",
-      
-      
     }}>
     <div className="mb-3">
       <div className="mb-3">
@@ -124,38 +103,17 @@ const PostForm = (props) => {
           <label htmlFor="story" className="story">What's Your Story?</label>
           <textarea className="form-control" id="Story"  value={postText} rows="3" onChange={handleChange}></textarea>
       </div>
-
-
-
      <div>
-
-{/*
-      <select onChange={handleCategory}>
+       <select onChange={handleCategory} value={category}>
         <option>Choose category</option>
-          {Object.keys(categoryName).map((key) => {
-            //console.log(category[index].categoryName);
-            //console.log(categoryName[key]._id);
-            console.log(categoryName[key]);
-            //console.log(value.categoryName);
-            //console.log(value._id);
-            return (
-          <option key={key} value={categoryName} >
-
-            {categoryName[key]}
-            </option>
-            
-            );
-          }
-          )};
-      </select>
-      */}
-       <select >
-        <option>Choose category</option>
-          
-          <option   >
-
-            
-            </option>
+          <option>Racism</option>
+          <option>Anti-Semitism</option>
+          <option>Sexism</option>
+          <option>Ableism</option>
+          <option>Tokenism</option>
+          <option>Colorism</option>
+          <option>Cissexism</option>
+          <option>Elitism</option>
       </select>
         </div>    
 

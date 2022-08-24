@@ -60,13 +60,15 @@ export const QUERY_POST = gql`
   }
 `;
 
+// title 
+//postText 
+//username
+//reactionCount
 export const QUERY_CATEGORY = gql`
   query posts($category: String) {
-    title
-    postText
-    username
+    
     category
-    reactionCount
+    
   }
 `;
 
@@ -113,10 +115,7 @@ export const QUERY_ME = gql`
         postText
         title
         createdAt
-      category {
-        categoryName
-        _id
-      }
+        category
         reactionCount
         reactions {
           _id
