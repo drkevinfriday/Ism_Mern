@@ -30,8 +30,8 @@ function Signup() {
   };
 
   return (
-    <div>
-    <form onSubmit={handleFormSubmit}>
+    <div className="signup-form mt-4">
+    <form className="card p-3 mb-5"onSubmit={handleFormSubmit}>
       <label htmlFor="email">Email:</label>
       <input
         type="text"
@@ -60,7 +60,7 @@ function Signup() {
         name="password"
         placeholder="********"
       />
-      <button className="btn d-block w-100" type="submit">
+      <button className="btn d-block w-100 mt-3" type="submit">
                 Submit
       </button>
     </form>

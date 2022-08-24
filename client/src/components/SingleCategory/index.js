@@ -13,7 +13,7 @@ const SingleCategory = ({ posts, title, category }) => {
     <div className='category-container'>
       
       {posts &&
-        posts.map(post => (
+        posts.map(post=> (
           <div key={post._id} className="card mb-3"
           style={{
             backgroundColor: 'transparent',

@@ -303,6 +303,9 @@ margin-bottom:2rem;
   font-size:1.6rem;
 }
 
+.signup-form{
+  margin-bottom:60vh;
+}
 
 
 @keyframes cubic-bezier {

@@ -40,7 +40,7 @@ import { Modal } from 'react-bootstrap';
     };
   
     return (
-      <div className="flex-row justify-center mb-4 ">
+      <div className="d-flex flex-row justify-content-center mb-4 ">
         <div className="col-12 col-md-6">
           <div className="card login-form" style={{background: ''}}>
             <h4 className="card-header" style={{}}>Login</h4>

@@ -17,7 +17,7 @@ import colorism from '../../assets/images/colorism.jpg';
 import collage from '../../assets/images/collage.jpg';
 import collage2 from '../../assets/images/collage2.jpg';
 import { useQuery } from '@apollo/client';
-import { QUERY_POSTS, QUERY_CATEGORY } from '../../utils/queries';
+import { QUERY_POSTS, QUERY_POST_CATEGORY } from '../../utils/queries';
 import { useParams } from 'react-router-dom';
 import SingleCategory from '../SingleCategory';
 
