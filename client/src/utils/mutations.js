@@ -51,10 +51,7 @@ export const REMOVE_POST = gql`
       title
       createdAt
       username
-      category {
-        categoryName
-        _id
-      }
+      category 
       reactionCount
       reactions {
         _id
