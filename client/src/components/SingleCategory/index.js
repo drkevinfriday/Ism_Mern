@@ -6,7 +6,7 @@ const SingleCategory = ({ posts, title, category }) => {
     //const category = posts.category;
     console.log(posts);
   if (!posts.length) {
-    return <h3>No Posts in this Category Yet</h3>;
+    return <h3>No Posts In This Category Yet</h3>;
   }
 
   return (

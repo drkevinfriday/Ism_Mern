@@ -58,16 +58,18 @@ const Profile = () => {
             Add Empath ☯︎
           </button>
         )}
-        <div className="flex-row justify-space-between mb-3">
+        <div className="container mb-3">
+        <div className="row">
+        <div className="col">
         <h2 className="profile-title">
           Welcome back {user.username}!
-          
           </h2>
           <div className="mb-3 post-form">{!userParam && <PostForm />}</div>
-          <div className="col-12 mb-3 col-lg-8 profile-posts">
+          <div className="col-12 my-5 col-lg-8 profile-posts text-black">
             <PostList posts={user.posts} title={`Your Stories...`}/>
           </div>
-          <div className="col-12 col-lg-3 mb-3">
+          </div>
+          <div className="col-12 col-lg-3 mb-3 col">
             <EmpathList
             username={user.username}
             empathCount={user.empathCount}
@@ -75,7 +77,7 @@ const Profile = () => {
             />
             </div>
         </div>
-        
+        </div>
       </div>
     );
   };

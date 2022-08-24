@@ -66,9 +66,21 @@ export const QUERY_POST = gql`
 //reactionCount
 export const QUERY_CATEGORY = gql`
   query posts($category: String) {
-    
-    category
-    
+    posts(category: $category){
+      title
+      postText
+      createdAt
+      username
+      category
+      reactionCount
+      reactions{
+        _id
+        reactionBody
+        username
+        createdAt
+
+      }
+    }
   }
 `;
 

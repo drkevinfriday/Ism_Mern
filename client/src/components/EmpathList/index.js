@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const EmpathList = ({ empathCount, username, empaths }) => {
   if (!empaths || !empaths.length) {
     return (
-      <p className="profile-empath">
+      <p className="profile-empath text-black">
         Let's Connect With Others, {username} 🌎 !{" "}
       </p>
     );

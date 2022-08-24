@@ -9,7 +9,7 @@ import Row from "react-bootstrap/Row";
 
 const PostList = ({ posts, title }) => {
   if (!posts.length) {
-    return <h3>
+    return <h3 className="text-black my-5">
         No Stories Yet! We Are Here To Support Your Stories. Write When You're
         Ready 😊{" "}</h3>;
   }
@@ -29,22 +29,22 @@ const PostList = ({ posts, title }) => {
 */
 
   return (
-    <Row xs={1} md={2} lg={4} className="">
+    <Row xs={1} md={2} lg={2} className="">
       <h3>{title}</h3>
       {posts &&
         posts.map((post) => (
           <Col>
-          <Card key={post._id} className="" >
+          <Card key={post._id} className="post-card" >
             
-            <Card.Body className="" >
-            <Card.Title className="">{post.title}</Card.Title>  
+            <Card.Body className="post-body" >
+            <Card.Title className="post-title">{post.title}</Card.Title>  
             <p className="" id={post._id}>
               <Link
                 to={`/profile/${post.username}`}
               >
                 {post.username}
               </Link>{" "}
-              Story Published On {post.createdAt}
+              {post.createdAt}
               </p>
               
               
@@ -53,7 +53,7 @@ const PostList = ({ posts, title }) => {
               <Link to={`/post/${post._id}`}>
                 <p className="mb-0">
                   Reactions: {post.reactionCount} || Click To{" "}
-                  {post.reactionCount ? "see" : "start"} The Discussion!
+                  {post.reactionCount ? "See" : "Start"} The Discussion!
                 </p>
               </Link>
               </div>

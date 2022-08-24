@@ -85,22 +85,22 @@ const PostForm = (props) => {
     <div
     style={{
       position: "relative",
-      backgroundColor: "mintcream",
+      backgroundColor: "purple",
       borderRadius: "25px",
       padding: "10px",
     }}>
     <div className="mb-3">
-      <div className="mb-3">
+      <div className="mb-3 text-white">
         <h3>Post Form:</h3>
           <label htmlFor="formFile" className="form-label"> Add Post Image</label>
           <input className="form-control" type="file" id="formFile" ></input>
       </div>
       <div>
-          <label htmlFor="Title" className="form-label">Title</label>
+          <label htmlFor="Title" className="form-label text-white">Title</label>
           <textarea  className="form-control" id="PostFormTitle" value={title} onChange={handleTitle} placeholder="What Shall We Call This?"></textarea>
       </div>
-      <div className="mb-3">
-          <label htmlFor="story" className="story">What's Your Story?</label>
+      <div className="mb-3 ">
+          <label htmlFor="story" className="story text-white">What's Your Story?</label>
           <textarea className="form-control" id="Story"  value={postText} rows="3" onChange={handleChange}></textarea>
       </div>
      <div>
@@ -117,8 +117,8 @@ const PostForm = (props) => {
       </select>
         </div>    
 
-      <div className="mb-3">
-      <button className="btn col-12 col-md-3 post-btn" type="click" onClick={handleFormSubmit}>
+      <div className="my-3">
+      <button className="btn btn-postform col-12 col-md-3 post-btn" type="click" onClick={handleFormSubmit}>
         Submit
       </button>
       </div>

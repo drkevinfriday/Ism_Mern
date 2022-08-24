@@ -149,9 +149,9 @@ p {
 }
 */
 
-.modal-open {
+/* .modal-open {
   
-}
+} */
 
 .modal-content {
   background-image: url("../src/assets/images/background.jpg");
@@ -210,9 +210,9 @@ p {
 
 /* Profile */
 
-.post-form {
+/* .post-form {
   
-}
+} */
 
 .profile-empath {
   font-family: Misto;
@@ -241,7 +241,7 @@ p {
 .profile-posts {
   color: white;
   position: relative;
-  
+
 }
 
 .card {
@@ -250,8 +250,9 @@ p {
   
 }
 
-.profile-div {
-  
+.profile-title {
+color:black;
+margin-bottom:2rem;  
 }
 
 
@@ -278,19 +279,31 @@ p {
 }
 */
 
-.login-form:hover {
+/* .login-form:hover {
   
-}
+} */
 
 .login-form {
   width: 100%;
   opacity: 0.9;
+  margin-bottom:65vh;
   
 }
 
 .form-input {
   width: 100%;
 }
+
+/* POST LIST STYLES */
+
+.post-title{
+  font-family: neue-haas-grotesk-display,sans-serif;
+  font-weight: 700;
+  color: black;
+  font-size:1.6rem;
+}
+
+
 
 @keyframes cubic-bezier {
   0% {
