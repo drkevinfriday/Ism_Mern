@@ -1,7 +1,6 @@
 const { Schema, model } = require('mongoose');
 const reactionSchema = require('./Reaction');
 const dateFormat = require('../utils/dateFormat');
-
 const postSchema = new Schema(
   {
     postText: {
@@ -43,11 +42,8 @@ const postSchema = new Schema(
     }
   }
 );
-
 postSchema.virtual('reactionCount').get(function() {
   return this.reactions.length;
 });
-
 const Post = model('Post', postSchema);
-
 module.exports = Post;

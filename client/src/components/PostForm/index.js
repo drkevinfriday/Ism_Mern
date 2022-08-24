@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import { ADD_POST } from "../../utils/mutations";
 import { QUERY_POSTS, QUERY_ME, QUERY_CATEGORY } from "../../utils/queries";
 import { useQuery } from "@apollo/client";
+import { Navigate } from "react-router-dom";
 
 //import { Link } from "react-router-dom";
 //import Category from "../Category";
@@ -11,6 +12,7 @@ import { useQuery } from "@apollo/client";
 const PostForm = (props) => {
   const [postText, setText] = useState("");
   const [title, setTitle] = useState("");
+  const [category, setCategory] = useState("");
   const [characterCount, setCharacterCount] = useState(0);
  
   const [addPost, { error }] = useMutation(ADD_POST, {
@@ -52,34 +54,51 @@ const PostForm = (props) => {
     }
   };
 
+  const handleCategory = (event) => {
+    //const userCategory = JSON.parse(event.target.value);
+      setCategory(event.target.value);
+      
+      //console.log(event.target.value);
+    }
+  
+  
   const handleFormSubmit = async event => {
     event.preventDefault();
+    console.log('HELLO');
+    //window.location.href = "/profile";
+    
+    
 
     try {
       // ADD POST TO DB
       await addPost({
-        variables: { postText, title },
-         
+        variables: { postText, title, category },
       });
-
+      
       // CLEAR FORM VALUE
       setText('');
       setTitle('');
       setCharacterCount(0);
       // return <Link to="/profile:username"></Link>
+      
+      //return window.location.reload();
+
     } catch (event) {
       console.error(event);
     }
+    
   };
 
+  /*
   const { id: _id } = useParams();
   const { loading, data } = useQuery(QUERY_CATEGORY, {
     variables: { id: _id},
   });
 
-  const category =  data?.category || {};
-  //console.log(category);
-  
+  const categoryName =  data?.category || {};
+  console.log(categoryName);
+  */
+ 
   return (
     <>
     <div
@@ -105,25 +124,40 @@ const PostForm = (props) => {
           <label htmlFor="story" className="story">What's Your Story?</label>
           <textarea className="form-control" id="Story"  value={postText} rows="3" onChange={handleChange}></textarea>
       </div>
+
+
+
      <div>
-      <select>
+
+{/*
+      <select onChange={handleCategory}>
         <option>Choose category</option>
-          {Object.values(category).map((value, index) => {
+          {Object.keys(categoryName).map((key) => {
             //console.log(category[index].categoryName);
-            //console.log(category[key]._id);
-            console.log(value.categoryName);
+            //console.log(categoryName[key]._id);
+            console.log(categoryName[key]);
+            //console.log(value.categoryName);
+            //console.log(value._id);
             return (
-          <option key={index} value={category.categoryName}>
-            {category[index].categoryName}
+          <option key={key} value={categoryName} >
+
+            {categoryName[key]}
             </option>
+            
             );
           }
           )};
       </select>
-        </div>    
-
-
+      */}
+       <select >
+        <option>Choose category</option>
           
+          <option   >
+
+            
+            </option>
+      </select>
+        </div>    
 
       <div className="mb-3">
       <button className="btn col-12 col-md-3 post-btn" type="click" onClick={handleFormSubmit}>

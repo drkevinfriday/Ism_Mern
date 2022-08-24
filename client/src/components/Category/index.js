@@ -149,12 +149,7 @@ const Category = () =>{
       const { loading, data } = useQuery(QUERY_POSTS);
       const posts = data?.posts || [];
       
-      const { id: _id } = useParams();
-      const { load, setLoad } = useQuery(QUERY_CATEGORY, {
-        variables: { id: _id},
-      });
-      const category = load?.category || {};
-      console.log(category);
+      
 /*
       const { id: _id } = useParams();
       const { load, cat } = useQuery(QUERY_CATEGORY, {

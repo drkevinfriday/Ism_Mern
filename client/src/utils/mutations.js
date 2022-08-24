@@ -24,10 +24,10 @@ export const ADD_USER = gql`
   }
 `;
 
-// CHANGED body TO postText // added title TESTING
+// CHANGED body TO postText // added title TESTING // added categoryName
 export const ADD_POST = gql`
-  mutation addPost($postText: String!, $title: String!) {
-    addPost(postText: $postText, title: $title) {
+  mutation addPost($postText: String!, $title: String!, $categoryName: String!) {
+    addPost(postText: $postText, title: $title, categoryName: $categoryName) {
       _id
       postText
       title

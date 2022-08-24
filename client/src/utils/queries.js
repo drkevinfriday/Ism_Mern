@@ -59,13 +59,14 @@ export const QUERY_POST = gql`
     }
   }
 `;
-// TESTING CATEGORY QUERY
+
 export const QUERY_CATEGORY = gql`
-  query category {
-    category {
-      _id
-      categoryName
-    }
+  query posts($category: String) {
+    title
+    postText
+    username
+    category
+    reactionCount
   }
 `;
 
