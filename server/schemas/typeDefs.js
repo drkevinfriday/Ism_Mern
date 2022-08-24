@@ -18,10 +18,7 @@ const typeDefs = gql
     reactions: [Reaction] 
   }
 
-  type Category {
-    _id: ID
-    categoryName: String
-  }
+
   type Reaction {
     _id: ID
     reactionBody: String
@@ -45,16 +42,15 @@ const typeDefs = gql
   type Query{
     posts(username: String): [Post]
   }
-  type Query {
-    category: Category
-
-  }
+  
   
   type Query {
     me: User
     users: [User]
     user(username: String!): User
     posts(username: String): [Post]
+    posts(category: String): [Post]
+
     post(_id: ID!): Post
   }
 

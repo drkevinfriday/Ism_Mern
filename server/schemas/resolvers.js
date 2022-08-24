@@ -20,10 +20,15 @@ const resolvers = {
             const params = username ? { username } : {};
             return Post.find(params).sort({ createdAt: -1 });
           },
+        posts: async (parent, { category }) => {
+            const params = category ? { category } : {};
+            return Post.find(params).sort({ createdAt: -1 });
+          },
         //   get single post by id
         post: async (parent, {_id})=>{
             return Post.findOne({_id});
         },
+        
         // get all users
         users: async () => {
             return User.find()
@@ -31,14 +36,15 @@ const resolvers = {
             .populate('empaths')
             .populate('posts');
         },
-        category: async () => {
-            return Category.find()
+        
+        // category: async () => {
+        //     return Category.find()
             
-        //category: async (parent, { categoryName }) => {
-                //const params = categoryName ? { categoryName } : {};
-                //return Category.find(params).sort({ categoryName });
-            //;
-        },
+        // //category: async (parent, { categoryName }) => {
+        //         //const params = categoryName ? { categoryName } : {};
+        //         //return Category.find(params).sort({ categoryName });
+        //     //;
+        // },
         // get a user by username
         user: async (parent, { username }) => {
             return User.findOne({ username })
@@ -76,17 +82,12 @@ const resolvers = {
             if (context.user) {
                 const post = await Post.create({...args, username: context.user.username});
 
-                // const newPost = await Post.findOneAndUpdate(
-                //     {_id: post._id},
-                //     {$push: {category:args.categoryName}},
-                //     {new: true}
-                // );
-                await User.findOneAndUpdate(
+                const newPost =  await User.findOneAndUpdate(
                     {_id: context.user._id},
                     { $push: {posts:post._id} },
                     {new: true}
                 );
-                return post;
+                return newPost;
             }
             throw new AuthenticationError('You need to be logged in')
         },
