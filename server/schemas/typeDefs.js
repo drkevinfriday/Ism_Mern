@@ -4,7 +4,7 @@ const { gql } = require('apollo-server-express');
 
 
 
-// create our typeDefs 
+// create our typeDefs
 // deleted category and image from schema temporarily
 const typeDefs = gql
 `type Post {
@@ -15,9 +15,12 @@ const typeDefs = gql
     username: String
     category: String
     reactionCount: Int
-    reactions: [Reaction] 
+    reactions: [Reaction]
   }
-
+  type Category {
+    _id: ID
+    categoryName: String
+  }
 
   type Reaction {
     _id: ID
@@ -42,8 +45,11 @@ const typeDefs = gql
   type Query{
     posts(username: String): [Post]
   }
+
   
   
+
+
   type Query {
     me: User
     users: [User]
