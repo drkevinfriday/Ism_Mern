@@ -91,88 +91,16 @@ const PostForm = (props) => {
 
   const category = data?.category || {};
   //console.log(category);
-
+      
   return (
     <>
-      <div
-        style={{
-          position: "relative",
-          backgroundColor: "purple",
-          borderRadius: "25px",
-          padding: "10px",
-        }}
-      >
-        <div className="mb-3">
-          <div className="mb-3 text-white">
-            <h3>Post Form:</h3>
-            <label htmlFor="formFile" className="form-label text-white">
-              {" "}
-              Add Post Image
-            </label>
-            <input className="form-control" type="file" id="formFile"></input>
-          </div>
-          <div>
-            <label htmlFor="Title" className="form-label text-white">
-              Title
-            </label>
-            <textarea
-              className="form-control"
-              id="PostFormTitle"
-              value={title}
-              onChange={handleTitle}
-              placeholder="What Shall We Call This?"
-            ></textarea>
-          </div>
-          <div className="mb-3">
-            <label htmlFor="story" className="story text-white">
-              What's Your Story?
-            </label>
-            <textarea
-              className="form-control"
-              id="Story"
-              value={postText}
-              rows="3"
-              onChange={handleChange}
-            ></textarea>
-          </div>
-          <div>
-            <select>
-              <option>Choose category</option>
-              {Object.values(category).map((value, index) => {
-                //console.log(category[index].categoryName);
-                //console.log(category[key]._id);
-                console.log(value.categoryName);
-                console.log(value._id);
-                return (
-                  <option key={value._id} value={value.categoryName}>
-                    {category[index].categoryName}
-                  </option>
-                );
-              })}
-              ;
-            </select>
-          </div>
-
-          <div className="mb-3">
-            <button
-              className="btn col-12 col-md-3 post-btn mt-3"
-              type="click"
-              onClick={handleFormSubmit}
-            >
-              Submit
-            </button>
-          </div>
-        </div>
-
-  return (
-    <>
-    <div
+    <div>
     style={{
       position: "relative",
       backgroundColor: "mintcream",
       borderRadius: "25px",
       padding: "10px",
-    }}>
+    }}
     <div className="mb-3">
       <div className="mb-3">
         <h3>Post Form:</h3>
@@ -206,6 +134,7 @@ const PostForm = (props) => {
         Submit
       </button>
       </div>
+    </div> 
     </>
   );
 };
