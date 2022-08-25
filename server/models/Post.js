@@ -1,7 +1,6 @@
 const { Schema, model } = require('mongoose');
 const reactionSchema = require('./Reaction');
 const dateFormat = require('../utils/dateFormat');
-
 const postSchema = new Schema(
   {
     postText: {
@@ -11,6 +10,11 @@ const postSchema = new Schema(
       maxlength: 280
     },
     title: {
+      type: String,
+      minlength: 1,
+      maxlength: 280
+    },
+    category: {
       type: String,
       minlength: 1,
       maxlength: 280
@@ -25,12 +29,12 @@ const postSchema = new Schema(
       required: true
     },
     reactions: [reactionSchema],
-    category: [
-      {
-        type: Schema.Types.ObjectId,
-        ref:'Category'
-      }
-    ]
+    // category: [
+    //   {
+    //     type: Number,
+    //     ref:'Category'
+    //   }
+    // ]
   },
   {
     toJSON: {
@@ -38,11 +42,8 @@ const postSchema = new Schema(
     }
   }
 );
-
 postSchema.virtual('reactionCount').get(function() {
   return this.reactions.length;
 });
-
 const Post = model('Post', postSchema);
-
 module.exports = Post;

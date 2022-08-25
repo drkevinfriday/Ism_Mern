@@ -27,7 +27,7 @@ const Category = () =>{
 //console.log(posts);
     let [photos] = useState ([
       {
-        id: 2,
+        id: 1,
         name: 'Racism',
         image: racism,
         image2: collage2,
@@ -35,14 +35,14 @@ const Category = () =>{
         description: 'Racism...'
         },
       {
-        id: 4,
+        id: 2,
         name: 'Anti-Semitism',
         image: antisemitism,
         url: 'category/antisemitism',
         description: 'Anti-Semitism...'
         },
         {
-        id: 1,
+        id: 3,
         name: 'Sexism',
         image: sexism,
         image2: collage,
@@ -51,7 +51,7 @@ const Category = () =>{
         },
        
         {
-        id: 3,
+        id: 4,
         name: 'Ableism',
         image: ableism,
         url: 'category/ableism',

@@ -26,17 +26,14 @@ export const ADD_USER = gql`
 
 // CHANGED body TO postText // added title TESTING // added categoryName
 export const ADD_POST = gql`
-  mutation addPost($postText: String!, $title: String!, $categoryName: String!) {
-    addPost(postText: $postText, title: $title, categoryName: $categoryName) {
+  mutation addPost($postText: String!, $title: String!, $category: String!) {
+    addPost(postText: $postText, title: $title, category: $category) {
       _id
       postText
       title
       createdAt
       username
-      category {
-        categoryName
-        _id
-      }
+      category 
       reactionCount
       reactions {
         _id
@@ -54,10 +51,7 @@ export const REMOVE_POST = gql`
       title
       createdAt
       username
-      category {
-        categoryName
-        _id
-      }
+      category 
       reactionCount
       reactions {
         _id
