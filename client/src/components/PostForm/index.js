@@ -11,7 +11,7 @@ const PostForm = (props) => {
   const [title, setTitle] = useState(“”);
   const [category, setCategory] = useState(“”);
   const [characterCount, setCharacterCount] = useState(0);
-  
+
   const [addPost, { error }] = useMutation(ADD_POST, {
     update(cache, { data: { addPost } }) {
       try {
@@ -27,7 +27,7 @@ const PostForm = (props) => {
 
       // CURRENT CACHE
       const { posts } = cache.readQuery({ query: QUERY_POSTS });
-      
+
       // PUSH NEW POST IN ARRAY
       cache.writeQuery({
         query: QUERY_POSTS,
@@ -35,7 +35,7 @@ const PostForm = (props) => {
       });
     },
   });
-  
+ 
   const handleChange = (event) => {
     if (event.target.value.length <= 2000) {
       setText(event.target.value);
@@ -50,12 +50,12 @@ const PostForm = (props) => {
       console.log(event.target.value);
     }
   };
-  
+ 
   const handleCategory = (event) => {
       setCategory(event.target.value);
       console.log(event.target.value);
     }
-  
+ 
     const handleFormSubmit = async event => {
     event.preventDefault();
     console.log(‘HELLO’);
@@ -65,7 +65,7 @@ const PostForm = (props) => {
       await addPost({
         variables: { postText, title, category },
       });
-  
+   
       // CLEAR FORM VALUE
       setText(‘’);
       setTitle(‘’);
@@ -74,19 +74,10 @@ const PostForm = (props) => {
       console.error(event);
     }
   };
- 
   
-  const { id: _id } = useParams();
-  const { loading, data } = useQuery(QUERY_CATEGORY, {
-    variables: { id: _id },
-  });
-
-  const category = data?.category || {};
-  //console.log(category);
-      
   return (
     <>
-    <div></div>
+    <div
     style={{
       position: “relative”,
       backgroundColor: “mintcream”,
@@ -126,7 +117,7 @@ const PostForm = (props) => {
       </button>
       </div>
       </div>
-    </div> 
+  </div>
   </>
   );
 };
