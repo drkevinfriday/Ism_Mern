@@ -12,23 +12,23 @@ For our group project, we built an app where people can share their stories over
 
 We built Anti-ISM with the following:
 * [Node.js](https://nodejs.org/en/)
-* [MongoDB]()
-* [React]()
-* [React-Bootstrap]()
+* [MongoDB](https://www.mongodb.com)
+* [React](https://reactjs.org)
+* [React-Bootstrap](https://react-bootstrap.github.io)
 * [Express](https://expressjs.com/)
-* [JSON Web Token]()
+* [JSON Web Token](https://jwt.io)
 
 ### Screenshots of Anti-ISM App
 
-![Login Page]( "Login Page")
+![Login Page](./client/src/assets/images/login.png "Login Page")
 
-![Signup Page]("Signup Page")
+![Signup Page](./client/src/assets/images/signup.png "Signup Page")
 
-![Profile Page]( "Homepage")
+![Profile Page](./client/src/assets/images/homepage.png "Homepage")
 
-![Profile Page]("My Profile & Create Post")
+![Profile Page](./client/src/assets/images/profile.png "My Profile & Create Post")
 
-![Reactions Form & Page ](  "Reactions")
+![Reactions Form & Page ](./client/src/assets/images/reactions.png  "Reactions")
 
  ## Table of Contents 
  
@@ -44,7 +44,7 @@ We built Anti-ISM with the following:
  
  ## Installation
 
- For installation, please install [Node](https://nodejs.dev) and write npm i to get started.
+ For installation, please install [Node](https://nodejs.dev) and write npm i to get started. Please run npm run seed and npm run develop to deploy.Please refer to client folder README.md to refer to React commands.
  
  ## Credits
 
