@@ -6,15 +6,17 @@ import Card from "react-bootstrap/Card";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 
-
 const PostList = ({ posts, title }) => {
   if (!posts.length) {
-    return <h3>
+    return (
+      <h3>
         No Stories Yet! We Are Here To Support Your Stories. Write When You're
-        Ready 😊{" "}</h3>;
+        Ready 😊{" "}
+      </h3>
+    );
   }
   // removed delete functionality temporarily and image rendering
-/*
+  /*
   const handleDelete = (event) => {
     const removeID = event.target.parentElement.getAtrribute("data-id")
     deletePost( removeID)
@@ -34,31 +36,24 @@ const PostList = ({ posts, title }) => {
       {posts &&
         posts.map((post) => (
           <Col>
-          <Card key={post._id} className="" >
-            
-            <Card.Body className="" >
-            <Card.Title className="">{post.title}</Card.Title>  
-            <p className="" id={post._id}>
-              <Link
-                to={`/profile/${post.username}`}
-              >
-                {post.username}
-              </Link>{" "}
-              Story Published On {post.createdAt}
-              </p>
-              
-              
-
-              <div className="card-link">
-              <Link to={`/post/${post._id}`}>
-                <p className="mb-0">
-                  Reactions: {post.reactionCount} || Click To{" "}
-                  {post.reactionCount ? "see" : "start"} The Discussion!
+            <Card key={post._id} className="my-3">
+              <Card.Body className="">
+                <Card.Title className="post-title">{post.title}</Card.Title>
+                <p className="" id={post._id}>
+                  <Link to={`/profile/`}>{post.username}</Link>
+                  {post.createdAt}
                 </p>
-              </Link>
-              </div>
-            </Card.Body>
-          </Card>
+
+                <div className="card-link">
+                  <Link to={`/post/${post._id}`}>
+                    <p className="mb-0">
+                      Reactions: {post.reactionCount} || Click To{" "}
+                      {post.reactionCount ? "See" : "Start"} The Discussion!
+                    </p>
+                  </Link>
+                </div>
+              </Card.Body>
+            </Card>
           </Col>
         ))}
     </Row>

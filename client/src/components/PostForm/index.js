@@ -1,6 +1,6 @@
 import React, { useState, useReducer } from "react";
 import { useMutation } from "@apollo/client";
-import { useParams } from 'react-router-dom';
+import { useParams } from "react-router-dom";
 import { ADD_POST } from "../../utils/mutations";
 import { QUERY_POSTS, QUERY_ME, QUERY_CATEGORY } from "../../utils/queries";
 import { useQuery } from "@apollo/client";
@@ -13,7 +13,7 @@ const PostForm = (props) => {
   const [title, setTitle] = useState("");
   const [categoryName, setCategory] = useState("");
   const [characterCount, setCharacterCount] = useState(0);
- 
+
   const [addPost, { error }] = useMutation(ADD_POST, {
     update(cache, { data: { addPost } }) {
       try {
@@ -28,12 +28,13 @@ const PostForm = (props) => {
       }
 
       // CURRENT CACHE
+      console.log(cache.readQuery({ query: QUERY_POSTS }));
       const { posts } = cache.readQuery({ query: QUERY_POSTS });
 
       // PUSH NEW POST IN ARRAY
       cache.writeQuery({
         query: QUERY_POSTS,
-        data: { POSTS: [addPost, ...posts] },
+        data: { posts: [addPost, ...posts] },
       });
     },
   });
@@ -52,7 +53,7 @@ const PostForm = (props) => {
       console.log(event.target.value);
     }
   };
-/*
+  /*
   const handleCategory = (event) => {
     if (event.target.value.length <= 100) {
       setTitle(event.target.value);
@@ -62,7 +63,7 @@ const PostForm = (props) => {
   };
   */
 
-  const handleFormSubmit = async event => {
+  const handleFormSubmit = async (event) => {
     event.preventDefault();
 
     try {
@@ -72,8 +73,8 @@ const PostForm = (props) => {
       });
 
       // CLEAR FORM VALUE
-      setText('');
-      setTitle('');
+      setText("");
+      setTitle("");
       setCharacterCount(0);
       // return <Link to="/profile:username"></Link>
     } catch (event) {
@@ -83,66 +84,85 @@ const PostForm = (props) => {
 
   const { id: _id } = useParams();
   const { loading, data } = useQuery(QUERY_CATEGORY, {
-    variables: { id: _id},
+    variables: { id: _id },
   });
 
-  const category =  data?.category || {};
+  const category = data?.category || {};
   //console.log(category);
-  
+
   return (
     <>
-    <div
-    style={{
-      position: "relative",
-      backgroundColor: "mintcream",
-      borderRadius: "25px",
-      padding: "10px",
-      
-      
-    }}>
-    <div className="mb-3">
-      <div className="mb-3">
-        <h3>Post Form:</h3>
-          <label htmlFor="formFile" className="form-label"> Add Post Image</label>
-          <input className="form-control" type="file" id="formFile" ></input>
-      </div>
-      <div>
-          <label htmlFor="Title" className="form-label">Title</label>
-          <textarea  className="form-control" id="PostFormTitle" value={title} onChange={handleTitle} placeholder="What Shall We Call This?"></textarea>
-      </div>
-      <div className="mb-3">
-          <label htmlFor="story" className="story">What's Your Story?</label>
-          <textarea className="form-control" id="Story"  value={postText} rows="3" onChange={handleChange}></textarea>
-      </div>
-     <div>
-      <select>
-        <option>Choose category</option>
-          {Object.values(category).map((value, index) => {
-            //console.log(category[index].categoryName);
-            //console.log(category[key]._id);
-            console.log(value.categoryName);
-            console.log(value._id);
-            return (
-          <option key={value._id} value={value.categoryName} >
-            {category[index].categoryName}
-            </option>
-            );
-          }
-          )};
-      </select>
-        </div>    
+      <div
+        style={{
+          position: "relative",
+          backgroundColor: "purple",
+          borderRadius: "25px",
+          padding: "10px",
+        }}
+      >
+        <div className="mb-3">
+          <div className="mb-3 text-white">
+            <h3>Post Form:</h3>
+            <label htmlFor="formFile" className="form-label text-white">
+              {" "}
+              Add Post Image
+            </label>
+            <input className="form-control" type="file" id="formFile"></input>
+          </div>
+          <div>
+            <label htmlFor="Title" className="form-label text-white">
+              Title
+            </label>
+            <textarea
+              className="form-control"
+              id="PostFormTitle"
+              value={title}
+              onChange={handleTitle}
+              placeholder="What Shall We Call This?"
+            ></textarea>
+          </div>
+          <div className="mb-3">
+            <label htmlFor="story" className="story text-white">
+              What's Your Story?
+            </label>
+            <textarea
+              className="form-control"
+              id="Story"
+              value={postText}
+              rows="3"
+              onChange={handleChange}
+            ></textarea>
+          </div>
+          <div>
+            <select>
+              <option>Choose category</option>
+              {Object.values(category).map((value, index) => {
+                //console.log(category[index].categoryName);
+                //console.log(category[key]._id);
+                console.log(value.categoryName);
+                console.log(value._id);
+                return (
+                  <option key={value._id} value={value.categoryName}>
+                    {category[index].categoryName}
+                  </option>
+                );
+              })}
+              ;
+            </select>
+          </div>
 
-
-          
-
-      <div className="mb-3">
-      <button className="btn col-12 col-md-3 post-btn" type="click" onClick={handleFormSubmit}>
-        Submit
-      </button>
+          <div className="mb-3">
+            <button
+              className="btn col-12 col-md-3 post-btn mt-3"
+              type="click"
+              onClick={handleFormSubmit}
+            >
+              Submit
+            </button>
+          </div>
+        </div>
       </div>
-      </div>
-  </div>
-  </>
+    </>
   );
 };
 
