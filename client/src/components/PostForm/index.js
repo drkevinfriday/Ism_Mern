@@ -98,6 +98,7 @@ const PostForm = (props) => {
           <label htmlFor=“story” className=“story”>What’s Your Story?</label>
           <textarea className=“form-control” id=“Story”  value={postText} rows=“3" onChange={handleChange}></textarea>
       </div>
+      
      <div>
        <select onChange={handleCategory} value={category}>
         <option>Choose category</option>
