@@ -1,2 +1,0 @@
-# deep-thoughts
-mern
